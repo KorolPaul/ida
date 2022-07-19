@@ -1,0 +1,11 @@
+.section {
+
+    &__dark {
+        background-color: $color;
+        color: $bg_color;
+    }
+
+    &_holder {
+        @include layout;
+    }
+}

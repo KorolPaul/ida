@@ -1,0 +1,85 @@
+input[type="checkbox"] {
+    position: absolute;
+    visibility: hidden;
+    z-index: -1;
+
+    & + label:not([class]) {
+        cursor: pointer;
+        display: inline-block;
+        padding: 0 0 0 36px;
+        min-height: 20px;
+        position: relative;
+        margin: 0;
+        transition: .2s $easing color;
+        @include tablet {
+            font-size: 18px;
+        }
+
+        &::before {
+            content: '';
+            box-sizing: border-box;
+            border: 1px solid #ECECEC;
+            border-radius: 4px;
+            height: 20px;
+            width: 20px;
+            position: absolute;
+            top: -1px;
+            left: 0;
+            transition: .1s ease-in-out border-color, .1s ease-in-out background-color;
+            @include desktop {
+                height: 26px;
+                width: 26px;
+            }
+        }
+        &::after {
+            content: '';
+            box-sizing: border-box;
+            background: url(#{$img}/check.svg) no-repeat center / 100% 100%;
+            width: 9px;
+            height: 9px;
+            position: absolute;
+            top: 5px;
+            left: 6px;
+            opacity: 0;
+            transform: scale(.3);
+            transition: .1s $easing opacity, .2s $easing transform;
+            @include desktop {
+                width: 12px;
+                height: 12px;
+                top: 6px;
+                left: 7px;
+            }
+        }
+    }
+    &:hover + label {
+        &::before {
+            border-color: $color;
+        }
+    }
+    &:checked + label {
+        &::before {
+            background-color: $cBlue ;
+            border-color: $cBlue;
+        }
+        &::after {
+            opacity: 1;
+            transform: scale(1);
+        }
+        &:hover::before {
+            opacity: .9;
+        }
+    }
+
+    &:disabled + label {
+        opacity: .6;
+        cursor: default;
+        &::before {
+            opacity: .6;
+            filter: grayscale(1);
+            pointer-events: none;
+        }
+    }
+    .error & + label:not([class])::before {
+        border-color: $cRed;
+    }
+}

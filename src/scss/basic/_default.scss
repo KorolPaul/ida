@@ -1,0 +1,93 @@
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    color: $color;
+    background: $bg_color url(#{$img}/bg.jpg) repeat;
+    font: #{$font-size__small}/#{1.4} $font-family;
+    padding: 0;
+    scroll-behavior: smooth;
+    @include tablet {
+        font-size: $font-size;
+    }
+}
+
+a {
+    color: $cPurpleDark;
+    text-decoration: none;
+    transition: .2s $easing color;
+
+    &:hover,
+    &.hover {
+        outline: none;
+    }
+    &:active,
+    &.active {
+        outline: none;
+    }
+
+    &[href^='tel'] {
+        white-space: nowrap;
+    }
+}
+
+p {
+    margin: 0 0 20px;
+    @include desktop {
+        margin-bottom: 22px;
+    }
+}
+
+img {
+    max-width: 100%;
+
+    &[data-src] {
+        display: none;
+        @include desktop {
+            display: initial;
+        }
+    }
+}
+
+button,
+input,
+textarea {
+    &:focus {
+        outline: none;
+    }
+}
+
+table {
+    border-collapse: collapse;
+    min-width: 100%;
+}
+
+ol,
+ul {
+    padding: 0 0 0 26px;
+    margin: 0 0 22px;
+    @include desktop {
+        padding-left: 30px;
+    }
+}
+
+a[name] {
+    position: relative;
+    top: -50px;
+}
+
+#agendalist {
+    flex-grow: 1;
+}
+
+.menu-opened {
+    overflow: hidden;
+    @include desktop {
+        overflow: initial;
+    }
+}
+
+.filters-opened {
+    overflow: hidden;
+}

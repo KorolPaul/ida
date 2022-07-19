@@ -1,0 +1,25 @@
+.logo {
+    position: absolute;
+    top: $indent;
+    left: $indent;
+    z-index: 2;
+    transition: .5s linear opacity;
+    @include desktop {
+        left: 74px;
+    }
+
+    &:hover {
+        opacity: .6;
+    }
+    &:active {
+        opacity: .8;
+    }
+
+    &_image {
+        display: block;
+        width: 67px;
+        @include desktop {
+            width: 110px;
+        }
+    }
+}

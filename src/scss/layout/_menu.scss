@@ -1,0 +1,70 @@
+
+.menu {
+    background: #781AA8 url(#{$img}/menu-bg.svg) no-repeat right bottom -35px / 40vh;
+    box-sizing: border-box;
+    position: fixed;
+    z-index: 11;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    overflow-y: auto;
+    left: 100%;
+    top: 0;
+    max-width: 1148px;
+    width: 100%;
+    padding: 22px 24px 51px;
+    transform: translateX(0);
+    transition: .6s $easing transform;
+    @include desktop {
+        padding: 22px 60px 51px;
+        background-size: 600px;
+    }
+
+    .menu-opened & {
+        transform: translateX(-100%);
+    }
+
+    &_link {
+        font-weight: 600;
+        font-size: 32px;
+        line-height: 1.2;
+        color: $cGreen;
+        max-width: 400px;
+        margin: 6px 0;
+        transition: .3s $easing color;
+        @include desktop {
+            font-size: 48px;
+            line-height: 1;
+            margin: 8px 0;
+            white-space: nowrap;
+        }
+        @include desktop-large {
+            font-size: 72px;
+        }
+
+        &:hover {
+            color: $cPurple;
+        }
+    }
+    &_button {
+        margin: 20vh 0 0;
+        @include desktop {
+            margin: 50px 0 75px;
+        }
+        @include desktop-large {
+            margin: 100px 0 150px;
+        }
+    }
+    &_social {
+        position: absolute;
+        right: $indent;
+        top: 50%;
+        width: 48px;
+        transform: translateY(-50%);
+        @include desktop {
+            position: static;
+            width: auto;
+            transform: none;
+        }
+    }
+}

@@ -1,0 +1,33 @@
+$img: "src/img";
+
+$bg_color: #FBFBFB;
+
+$color: #000;
+$cGreen: #60E771;
+$cRed: #FF0E0E;
+$cPink: #F4A3DD;
+$cOrange: #FCAC5D;
+$cGrey: #E9E9E9;
+$cGreyLight: rgba(56, 45, 77, .3);
+$cBlue: #7360E6;
+$cBlueLight: #8EA2EC;
+$cYellow: #FFD369;
+$cPurple: #C859FF;
+$cPurpleDark: #781AA8;
+$cPurpleLight: #9778DD;
+
+$font-family: 'PT Mono', monospace;
+$font-family__heading: 'Inter', sans-serif;
+
+$font-size: 16px;
+$font-size__small: 14px;
+
+$max-width: 1240px;
+$indent: 16px;
+
+// easings
+$easingSmooth: cubic-bezier(0.38, 0.005, 0.215, 1);
+$easeOutCirc: cubic-bezier(.07, .82, .17, 1);
+$easeInOutCirc: cubic-bezier(.78, .13, .15, .86);
+$easeInCirc: cubic-bezier(.6, .04, .98, .34);
+$easing: $easingSmooth;
