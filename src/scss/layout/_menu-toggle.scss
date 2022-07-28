@@ -1,38 +1,23 @@
 .menu-toggle {
     @include button-reset;
     position: fixed;
-    top: $indent;
+    top: 26px;
     right: $indent;
-    width: 40px;
-    height: 40px;
+    width: 24px;
+    height: 24px;
     z-index: 12;
-    border-radius: 8px 0 8px 0;
     background-color: $cGreen;
     @include tablet {
-        right: 48px;
-    }
-    @include desktop {
-        width: 72px;
-        height: 72px;
-    }
-    @include desktop-large {
-        right: 74px;
-    }
-
-    &:hover {
-        background-color: $cGreen;
+        display: none;
     }
     
     &_line {
         position: absolute;
-        height: 2px;
         top: 50%;
-        left: 25%;
-        right: 25%;
-        border-radius: 1px;
-        background-color: $color;
-        transition: .4s $easing opacity,
-                    .4s $easing transform;
+        left: 0;
+        width: 24px;
+        border: 2px dashed $color;
+        transition: .3s $easing transform;
 
         &:nth-child(1) {
             margin-top: -6px;
@@ -48,11 +33,6 @@
             }
         }
         &:nth-child(2) {
-            .menu-opened & {
-                opacity: 0;
-            }
-        }
-        &:nth-child(3) {
             margin-top: 6px;
             @include desktop {
                 margin-top: 10px;

@@ -6,23 +6,28 @@ input[type="url"],
 input[type="tel"] {
     @include placeholder-color($color);
     color: $color;
-    background: #fff;
-    border: 1px solid #E6E6E6;
-    border-radius: 8px;
+    background: transparent;
+    border: none;
+    border-bottom: 1px dashed currentColor;
+    border-radius: 0;
     box-sizing: border-box;
-    font: 16px $font-family;
-    height: 54px;
-    line-height: 54px;
-    padding: 0 20px;
+    font: 18px $font-family;
+    height: 55px;
+    line-height: 34px;
+    padding: 0;
     width: 100%;
-    transition: .2s ease-in border-color, .2s ease-in color;
+    transition: .2s ease-in border-color,
+                .2s ease-in color,
+                .2s ease-in padding;
 
     &:focus {
         color: $color;
         border-color: $color;
+        padding-left: 8px
     }
 
     .error & {
-        border-color: $cRed;
+        @include placeholder-color($cRed);
+        color: $cRed;
     }
 }

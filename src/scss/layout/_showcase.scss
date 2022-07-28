@@ -1,0 +1,127 @@
+.showcase {
+    padding: $indent 0 64px;
+    @include tablet {
+        padding-top: 24px;
+        padding-bottom: 68px;
+    }
+    @include desktop {
+        padding-top: 60px;
+        padding-bottom: 140px;
+        position: relative;
+    }
+
+    &_title {
+        font-size: 56px;
+        line-height: .9;
+        margin: 0;
+        @include tablet {
+            font-size: 112px;
+        }
+        @include desktop {
+            font-size: 214px;
+        }
+    }
+    &_subtitle {
+        font-size: 22px;
+        font-weight: 400;
+        text-transform: uppercase;
+        margin: 0 0 64px;
+        @include tablet {
+            font-size: 24px;
+        }
+        @include desktop {
+            font-size: 44px;
+        }
+    }
+    &_features {
+        @include tablet {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            justify-content: flex-end;
+        }
+        @include desktop {
+            justify-content: flex-start;
+            flex-wrap: nowrap;
+        }
+    }
+    &_feature {
+        display: block;
+        font-size: 18px;
+        padding: 54px 0 24px;
+        position: relative;
+        font-family: $font-family__heading;
+        text-transform: uppercase;
+        @include tablet {
+            width: 35%;
+        }
+
+        &:nth-child(1) {
+            @include tablet {
+                margin: 70px 0 0;
+            }
+            @include desktop {
+                width: 292px;
+            }
+        }
+        &:nth-child(2) {
+            @include tablet {
+                width: 60%;
+            }
+            @include desktop {
+                width: 261px;
+            }
+        }
+        &:nth-child(3) {
+            @include tablet {
+                margin-top: -20px;
+            }
+            @include desktop {
+                width: 280px;
+            }
+        }
+
+        &::before {
+            content: '';
+            border-top: 1px dashed currentColor;
+            mask: linear-gradient(90deg, rgba(#fff, 0), rgba(#fff, 1) 50%, rgba(#fff, 1) 50%, rgba(#fff, 0) 100%);
+            position: absolute;
+            left: 0;
+            top: 0;
+            right: 0;
+        }
+        &::after {
+            content: '';
+            height: 14px;
+            width: 14px;
+            position: absolute;
+            left: 0;
+            top: 24px;
+            background-color: $cRed;
+            border-radius: 50%;
+        }
+    }
+    &_down {
+        width: 161px;
+        height: 161px;
+        border-radius: 50%;
+        background: url(#{$img}/scroll-down.svg) no-repeat center / 100%;
+        margin: auto;
+        transition: .2s $easingSmooth opacity;
+        @include tablet {
+            margin: 0 0 0 126px;
+        }
+        @include desktop {
+            position: absolute;
+            right: 0;
+            bottom: 100px;
+        }
+
+        &:hover {
+            opacity: .6;
+        }
+        &:active {
+            opacity: .8;
+        }
+    }
+}

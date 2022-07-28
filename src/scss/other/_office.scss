@@ -1,0 +1,30 @@
+.office {
+    margin: 0 0 120px;
+    @include tablet {
+        margin-bottom: 80px;
+    }
+    @include desktop {
+        margin-bottom: 60px;
+    }
+
+    &_adress {
+        margin: 74px 0 0;
+        text-align: right;
+        font-size: 16px;
+        line-height: 1.5;
+        @include tablet {
+            margin-top: 64px;
+        }
+        @include desktop {
+            margin-top: 40px;
+        }
+
+        p {
+           margin: 0; 
+        }
+        a {
+            color: $color;
+            margin: 0 0 0 10px;
+        }
+    }
+}

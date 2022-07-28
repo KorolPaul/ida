@@ -1,0 +1,36 @@
+.contact-form {
+    @include tablet {
+        box-sizing: border-box;
+        padding: 80px;
+        border: 1px solid #000;
+        border-bottom: none;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    &_title {
+        font-weight: 700;
+        font-size: 32px;
+        margin: 0 0 40px;
+        text-align: center;
+        @include tablet {
+            max-width: 560px;
+        }
+        @include desktop {
+            margin-bottom: 80px;
+        }
+    }
+    &_content {
+        @include tablet {
+            max-width: 440px;
+        }
+        @include desktop {
+            max-width: none;
+            width: 1010px;
+        }
+    }
+    &_sumbit {
+        text-align: center;
+    }
+}

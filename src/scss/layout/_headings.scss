@@ -1,52 +1,48 @@
 %heading-1 {
+    font-family: $font-family__heading;
     font-size: 48px;
-    line-height: .95;
-    font-weight: 400;
+    line-height: 1.3;
+    font-weight: 700;
     margin: 0 0 70px;
     @include desktop {
-        font-size: vw(140);
-        margin-bottom: vw(120);
+        font-size: 106px;
     }
 }
 %heading-2 {
+    font-family: $font-family__heading;
     font-size: 32px;
-    line-height: 1.2;
-    font-weight: 600;
+    line-height: 1.3;
+    font-weight: 700;
     margin: 0 0 20px;
     @include desktop {
-        font-size: vw(72);
+        font-size: 66px;
     }
 }
 %heading-3 {
+    font-family: $font-family__heading;
     font-size: 20px;
     line-height: 1.4;
-    font-weight: 400;
+    font-weight: 500;
     @include desktop {
-        font-size: vw(60);
+        font-size: 41px;
     }
 }
 %heading-4 {
+    font-family: $font-family__heading;
     font-size: 20px;
-    line-height: 1.2;
+    line-height: 1.3;
     font-weight: 400;
     @include desktop {
-        font-size: vw(40);
+        font-size: 26px;
     }
 }
 %heading-5 {
+    font-family: $font-family__heading;
     font-size: 16px;
     line-height: 1.2;
     font-weight: 400;
     @include desktop {
-        font-size: vw(32);
-    }
-}
-%heading-6 {
-    font-size: 12px;
-    line-height: 1.4;
-    font-weight: 400;
-    @include desktop {
-        font-size: vw(24);
+        font-size: 16px;
     }
 }
 
@@ -69,8 +65,4 @@ h4,
 h5,
 .heading-5 {
     @extend %heading-5;
-}
-h6,
-.heading-6 {
-    @extend %heading-6;
 }

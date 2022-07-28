@@ -1,24 +1,26 @@
 textarea {
     @include placeholder-color($color);
     color: $color;
-    background: #fff;
-    border: 1px solid #E6E6E6;
-    border-radius: 8px;
+    background: transparent;
+    border: 1px dashed currentColor;
+    border-radius: 0;
     box-sizing: border-box;
-    font: 16px $font-family;
-    height: 54px;
-    line-height: 54px;
-    padding: 0 20px;
+    font: 18px $font-family;
+    height: 55px;
+    line-height: 34px;
+    padding: 4px $indent;
     width: 100%;
-    transition: .2s ease-in border-color, .2s ease-in color;
     resize: none;
-    height: 150px;
-    @include desktop {
-        height: 230px;
-    }
+    height: 200px;
+    margin: 0 0 16px;
 
     &:focus,
     &.focus {
         
+    }
+
+    .error & {
+        @include placeholder-color($cRed);
+        color: $cRed;
     }
 }

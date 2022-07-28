@@ -2,40 +2,35 @@
     display: inline-block;
     background: transparent;
     box-sizing: border-box;
-    border: 2px solid $cGreen;
-    border-radius: 8px 0px;
-    background-color: $cGreen;
+    border: 1px dashed $bg_color;
+    border-radius: 50px;
+    background-color: $cRed;
     cursor: pointer;
-    color: $color;
-    font-size: 14px;
+    color: $bg_color;
+    font-family: $font-family__heading;
+    font-size: 24px;
     font-weight: 600;
-    height: 49px;
-    line-height: 45px;
+    height: 62px;
+    line-height: 58px;
     padding: 0 24px;
     min-width: 146px;
     white-space: nowrap;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
     text-align: center;
-    transform: scale(1);
+    width: 100%;
     transition: .2s $easing color,
-                .2s $easing background-color,
-                .2s $easing transform;
-    @include desktop {
-        padding: 0 40px;
-        font-size: vw(17);
-        height: vw(56);
-        line-height: vw(53);
-    }
-    @include desktop-large {
-        height: vw(70);
-        line-height: vw(66);
+                .2s $easing background-color;
+    @include tablet {
+        width: auto;
+        min-width: 300px;
     }
 
     &:hover {
-        background-color: $bg_color;
-        transform: scale(1.02);
+        background-color: #A32D1D;
     }
     &:active {
-        transform: scale(.98);
+        background-color: $cGreen;
     }
     &:disabled {
         opacity: .6;
@@ -65,47 +60,4 @@ button,
 input[type="button"],
 input[type="submit"] {
     @include button;
-}
-
-.button {
-    &__dark {
-        color: $bg_color;
-        background-color: $color;
-        border-color: $color;
-
-        &:hover {
-            color: $color;
-            background-color: $bg_color;
-        }
-    }
-    &__pink {
-        color: $bg_color;
-        background-color: $cPink;
-        border-color: $cPink;
-
-        &:hover {
-            background-color: $bg_color;
-            color: $cPink;
-        }
-    }
-    &__purple {
-        color: $bg_color;
-        background-color: $cPurpleLight;
-        border-color: $cPurpleLight;
-
-        &:hover {
-            background-color: $bg_color;
-            color: $cPurpleLight;
-        }
-    }
-    &__orange {
-        color: $bg_color;
-        background-color: $cOrange;
-        border-color: $cOrange;
-
-        &:hover {
-            background-color: $bg_color;
-            color: $cOrange;
-        }
-    }
 }

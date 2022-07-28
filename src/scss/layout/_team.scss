@@ -1,0 +1,31 @@
+.team {
+    @include desktop {
+        height: 100vh;
+        position: relative;
+    }
+
+    &_slider {
+        @include desktop {
+            position: relative;
+            display: flex;
+            font-size: 0;
+            padding-bottom: 390px;
+        }
+
+        & > div {
+            flex-grow: 1;
+
+            &:nth-child(odd) {
+                @include desktop {
+                    margin-top: 54px;
+                }
+            }
+        }
+    }
+
+    .tns-ovh {
+        @include desktop {
+            overflow: visible;
+        }
+    }
+}

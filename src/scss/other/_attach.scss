@@ -1,0 +1,23 @@
+.attach {
+    &_input {
+        position: absolute;
+        opacity: 0;
+        pointer-events: none;
+    }
+    &_label {
+        display: inline-block;
+        height: 24px;
+        line-height: 24px;
+        font-size: 14px;
+        padding: 0 0 0 32px;
+        background: url(#{$img}/attach.svg) no-repeat left center / 24px 24px;
+        transition: .2s $easingSmooth opacity;
+
+        &:hover {
+            opacity: .6;
+        }
+        &:active {
+            opacity: .8;
+        }
+    }
+}

@@ -1,0 +1,133 @@
+.vacancies {
+    border-bottom: 1px solid $color;
+    border-right: 1px solid $color;
+}
+
+.vacancy {
+    padding: $indent 24px;
+    border-top: 1px dashed $color;
+    border-left: 1px solid $color;
+    position: relative;
+    transition: .2s $easingSmooth background,
+                .2s $easingSmooth border;
+    @include tablet {
+        padding: 24px 40px;
+    }
+    @include desktop {
+        padding: 35px 52px;
+    }
+
+    &:first-child {
+        border-top-style: solid;
+    }
+
+    &.active,
+    &:hover {
+        background-color: $cRed;
+        color: $bg_color;
+        border-top: 1px solid $cRed;
+
+        &::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -1px;
+            bottom: 0;
+            width: 4px;
+            background: repeating-linear-gradient($bg_color, $cRed 2px);
+        }
+    }
+    &.active + &,
+    &:hover + & {
+        border-top: 1px solid $cRed;
+    }
+
+    &_title {
+        width: 70%;
+        font-size: 22px;
+        font-weight: 700;
+        font-family: $font-family__heading;
+        margin: 0;
+        display: block;
+        text-transform: uppercase;
+        @include tablet {
+            font-size: 24px;
+        }
+        @include desktop {
+            font-size: 44px;
+        }
+    }
+    &_content {
+        max-height: 0;
+        overflow: hidden;
+        transition: .3s $easingSmooth max-height;
+
+        .vacancy:hover &,
+        .vacancy.active & {
+            max-height: 400px;
+        }
+    }
+    &_description {
+        font-size: 16px;
+        margin: 24px 0 30px;
+        @include desktop {
+            font-size: 22px;
+        }
+    }
+    &_tags {
+        display: flex;
+        gap: 20px;
+    }
+    &_tag {
+        font-size: 14px;
+        text-transform: uppercase;
+        padding: 0 16px;
+        border: 1px dashed $bg_color;
+        border-radius: 20px;
+        height: 29px;
+        line-height: 31px;
+        @include tablet {
+            height: 32px;
+            line-height: 33px;
+            font-size: 18px;
+            padding: 0 24px;
+        }
+    }
+    &_arrow {
+        position: absolute;
+        background: $bg_color url(#{$img}/arrow-right.svg) no-repeat center / 100%;
+        width: 30px;
+        height: 30px;
+        position: absolute;
+        top: 16px;
+        right: 24px;
+        border-radius: 50%;
+        @include tablet {
+            width: 50px;
+            height: 50px;
+            top: 16px;
+            right: 40px;
+        }
+        @include desktop {
+            top: 24px;
+        }
+
+        &::after {
+            content: '';
+            background: $bg_color url(#{$img}/arrow-right-red.svg) no-repeat center / 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border-radius: 50%;
+            opacity: 0;
+            transition: .2s $easingSmooth opacity;
+        }
+
+        .vacancy:hover &::after,
+        .vacancy.active &::after {
+            opacity: 1;
+        }
+    }
+}
