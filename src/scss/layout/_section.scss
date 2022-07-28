@@ -6,10 +6,13 @@
         color: $bg_color;
     }
     &__clipped {
-        mask: linear-gradient(45deg, #fff 95%, transparent 95%) top right;
+        mask: linear-gradient(45deg, #fff 92%, transparent 92%) top right;
         mask-size: 100% 100%;
         mask-repeat: no-repeat;
         mask-composite: intersect;
+        @include desktop {
+            mask: linear-gradient(45deg, #fff 96%, transparent 96%) top right;
+        }
     }
 
     &_holder {

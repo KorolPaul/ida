@@ -5,8 +5,7 @@
     right: $indent;
     width: 24px;
     height: 24px;
-    z-index: 12;
-    background-color: $cGreen;
+    z-index: 10;
     @include tablet {
         display: none;
     }
@@ -16,33 +15,19 @@
         top: 50%;
         left: 0;
         width: 24px;
-        border: 2px dashed $color;
-        transition: .3s $easing transform;
+        height: 2px;
+        background: url(#{$img}/burger-line.svg) no-repeat center center / 100% 100%;
 
         &:nth-child(1) {
             margin-top: -6px;
             @include desktop {
                 margin-top: -10px;
             }
-
-            .menu-opened & {
-                transform: rotate(45deg) translate(5px, 4px);
-                @include desktop {
-                    transform: rotate(45deg) translate(7px, 7px);
-                }
-            }
         }
         &:nth-child(2) {
             margin-top: 6px;
             @include desktop {
                 margin-top: 10px;
-            }
-
-            .menu-opened & {
-                transform: rotate(-45deg) translate(5px, -4px);
-                @include desktop {
-                    transform: rotate(-45deg) translate(7px, -7px);
-                }
             }
         }
     }

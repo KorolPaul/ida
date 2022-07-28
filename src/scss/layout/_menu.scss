@@ -1,70 +1,204 @@
 
 .menu {
-    background: #781AA8 url(#{$img}/menu-bg.svg) no-repeat right bottom -35px / 40vh;
+    background-color: $bg_color;
     box-sizing: border-box;
     position: fixed;
     z-index: 11;
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
+    align-items: stretch;
     height: 100%;
     overflow-y: auto;
     left: 100%;
     top: 0;
-    max-width: 1148px;
     width: 100%;
-    padding: 22px 24px 51px;
     transform: translateX(0);
-    transition: .6s $easing transform;
+    transition: .6s $easingSmooth transform;
     @include desktop {
-        padding: 22px 60px 51px;
-        background-size: 600px;
+        background: none;
+        right: 100px;
+        top: 60px;
+        left: auto;
+        width: auto;
+        height: auto;
+        z-index: 11;
+        mix-blend-mode: difference;
+        overflow-y: visible;
     }
 
     .menu-opened & {
         transform: translateX(-100%);
     }
 
-    &_link {
-        font-weight: 600;
+    &::before,
+    &::after {
+        @include desktop {
+            content: '';
+            width: 705px;
+            height: 705px;
+            position: absolute;
+            right: -445px;
+            top: -440px;
+        }
+    }
+    &::before {
+        @include desktop {
+            background: url(#{$img}/menu-circle.svg) no-repeat center center / 100% 100%;
+        }
+    }
+    &::after {
+        @include desktop {
+            border-radius: 50%;
+            background-color: $bg_color;
+            transform: scale(0);
+            transform-origin: center center;
+            transition: .3s $easingSmooth transform;
+        }
+    }
+    &:hover::after {
+        @include desktop {
+            transform: scale(1);
+        }
+    }
+
+    &_header {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 36px 0;
+        position: relative;
+        border-bottom: 1px dashed #000;
+        @include desktop {
+            display: none;
+        }
+    }
+    &_logo {
+        font-family: $font-family__heading;
+        font-weight: 700;
         font-size: 32px;
-        line-height: 1.2;
-        color: $cGreen;
-        max-width: 400px;
-        margin: 6px 0;
+        line-height: 90%;
+        text-transform: uppercase;
+        color: #000;
+        @include tablet {
+            font-size: 40px;
+        }
+    }
+    &_close {
+        @include button-reset;
+        color: #000;
+        font-size: 14px;
+        position: absolute;
+        right: 18px;
+        top: 40px;
+        transition: .2s $easingSmooth opacity,
+                    .2s $easingSmooth color;
+
+        &:hover {
+            color: $cGreen;
+        }
+    
+        &:active {
+            opacity: .8;
+        }
+    }
+    &_links {
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        @include desktop {
+            align-items: stretch;
+            text-align: right;
+            position: relative;
+            z-index: 1;
+            mix-blend-mode: difference;
+        }
+    }
+    &_link {
+        font-size: 24px;
+        color: $color;
+        margin: 12px 0;
         transition: .3s $easing color;
         @include desktop {
-            font-size: 48px;
-            line-height: 1;
+            color: $bg_color;
+            font-size: 16px;
             margin: 8px 0;
-            white-space: nowrap;
-        }
-        @include desktop-large {
-            font-size: 72px;
         }
 
         &:hover {
-            color: $cPurple;
+            color: $cGreen;
         }
     }
-    &_button {
-        margin: 20vh 0 0;
+    &_footer {
+        background-color: #000;
+        border-top: 1px dashed $bg_color;
         @include desktop {
-            margin: 50px 0 75px;
-        }
-        @include desktop-large {
-            margin: 100px 0 150px;
+            display: none;
         }
     }
-    &_social {
-        position: absolute;
-        right: $indent;
-        top: 50%;
-        width: 48px;
-        transform: translateY(-50%);
+    &_footer-text {
+        padding: 80px $indent;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 12px;
+        @include tablet {
+            padding-top: 126px;
+            padding-bottom: 126px;
+        }
+    }
+    &_footer-link {
+        color: $bg_color;
+        font-size: 16px;
+        line-height: 1.5;
+        transition: .2s $easingSmooth opacity,
+                    .2s $easingSmooth color;
+        
+        &:hover {
+            color: $cGreen;
+        }
+    
+        &:active {
+            opacity: .8;
+        }
+    }
+    &_footer-social {
+        display: flex;
+        align-items: stretch;
+        justify-content: center;
+        border-top: 1px dashed $bg_color;
+    }
+    &_footer-social-link {
+        display: flex;
+        align-items: center;
+        padding: 24px 32px;
+        border-right: 1px dashed $bg_color;
+
         @include desktop {
-            position: static;
-            width: auto;
-            transform: none;
+            padding-left: 64px;
+            padding-right: 64px;
+        }
+
+        &:first-child {
+            border-left: 1px dashed $bg_color;
+        }
+    }
+
+    &_footer-social-image {
+        height: 32px;
+        width: 32px;
+        transition: .2s $easingSmooth opacity,
+                    .1s $easingSmooth transform;
+
+        &:hover {
+            opacity: .8;
+        }
+
+        &:active {
+            transform: scale(.9);
         }
     }
 }
