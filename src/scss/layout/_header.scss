@@ -1,3 +1,78 @@
 .header {
-    position: relative;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 100px;
+    background: url(#{$img}/header-bg.svg) no-repeat 100% top / auto 100%;
+    @include desktop {
+        height: 50px;
+        background-size: 50px 50px;
+    }
+
+    &__static {
+        position: relative;
+        background-color: $color;
+        @include desktop {
+            height: 100px;
+        }
+    }
+
+    &_holder {
+        @include layout;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+        @include desktop {
+            justify-content: space-between;
+        }
+    }
+    &_back {
+        background: url(#{$img}/back.svg) no-repeat left center / 40px 40px;
+        position: absolute;
+        left: $indent;
+        top: 50%;
+        margin-top: -20px;
+        height: 40px;
+        width: 40px;
+        font-size: 0;
+        transition: .2s $easingSmooth;
+        @include tablet {
+            font-size: 14px;
+            line-height: 40px;
+            padding: 0 0 0 52px;
+            width: auto;
+            color: $bg_color;
+        }
+        @include desktop {
+            position: static;
+            flex-grow: 1;
+            width: 33.33%;
+            margin: 0;
+        }
+
+        &:hover {
+            opacity: .6;
+        }
+        &:active {
+            opacity: .8;
+        }
+    }
+    &_logo {
+        font-family: $font-family__heading;
+        font-weight: 700;
+        font-size: 32px;
+        line-height: .9;
+        text-transform: uppercase;
+        color: $bg_color;
+        text-align: center;
+        @include tablet {
+            font-size: 40px;
+        }
+        @include desktop {
+            flex-grow: 1;
+            width: 33.33%;
+        }
+    }
 }

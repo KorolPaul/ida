@@ -1,0 +1,48 @@
+.job {
+    padding: 0;
+    border: none;
+    margin: 0;
+    max-width: none;
+    @include desktop {
+        display: flex;
+        align-items: flex-start;
+    }
+
+    &_section {
+        background-color: #E4E4E4;
+        padding: 40px $indent 80px;
+        @include desktop {
+            padding: 80px 40px 80px 100px;
+            flex-grow: 1;
+            width: 50%;
+        }
+
+        &:first-child {
+            background-color: $color;
+            color: $bg_color;
+            border-top: 1px dashed $bg_color;
+            @include desktop {
+                min-height: calc(100vh - 100px);
+                position: sticky;
+                top: 0;
+            }
+
+            li::before {
+                background-color: $bg_color;
+            }
+        }
+        h3:first-child {
+            margin-top: 0;
+            @include desktop {
+                margin-top: 10px;
+            }
+        }
+    }
+    &_title {
+        text-align: left;
+        margin: 0 0 40px;
+        @include desktop {
+            margin-bottom: 24px;
+        }
+    }
+}

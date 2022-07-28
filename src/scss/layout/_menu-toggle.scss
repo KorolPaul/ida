@@ -9,6 +9,15 @@
     @include tablet {
         display: none;
     }
+
+    .header__static & {
+        @include tablet {
+            display: block;
+        }
+        @include desktop {
+            display: none;
+        }
+    }
     
     &_line {
         position: absolute;

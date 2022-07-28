@@ -1,0 +1,35 @@
+.cookies {
+    background: $bg_color;
+    position: fixed;
+    z-index: 9;
+    bottom: $indent;
+    left: $indent;
+    right: $indent;
+    padding: 28px 36px;
+    box-sizing: border-box;
+    max-width: 466px;
+    border: 1px solid $color;
+    display: none;
+    @include tablet {
+        bottom: 40px;
+        left: auto;
+        right: 48px;
+        padding: 40px;
+    }
+
+    &_text {
+        font-size: 14px;
+        line-height: 1.7;
+        margin: 0 0 20px;
+    }
+    &_button {
+        height: 51px;
+        line-height: 51px;
+        background-color: $color;
+        border-radius: 0;
+        border: 1px solid $color;
+        font-size: 18px;
+        font-weight: 400;
+        width: 100%;
+    }
+}
