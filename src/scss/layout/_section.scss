@@ -1,6 +1,11 @@
 .section {
-    overflow: hidden;
     background-color: $bg_color;
+    padding: 80px 0 0;
+    position: relative;
+    @include desktop {
+        padding-top: 120px;
+        overflow: hidden;
+    }
 
     &__dark {
         background-color: $color;
@@ -12,16 +17,13 @@
     }
     &_title {
         display: block;
-        margin: 80px 0 40px;
+        margin: 0 0 40px;
         position: relative;
         padding: 0 0 0 29px;
         font-size: 22px;
         line-height: 1.5;
         color: $cGray;
         font-family: $font-family__heading;
-        @include desktop {
-            margin-top: 120px;
-        }
 
         &::before {
             content: '';

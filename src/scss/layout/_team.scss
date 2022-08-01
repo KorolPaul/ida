@@ -1,7 +1,11 @@
 .team {
+    position: relative;
+    @include tablet {
+        padding: 0 0 100px;
+    }
     @include desktop {
         height: 100vh;
-        position: relative;
+        padding: 0;
     }
 
     &_slider {
@@ -20,6 +24,25 @@
                     margin-top: 54px;
                 }
             }
+        }
+    }
+    &_circle {
+        display: none;
+        @include tablet {
+            display: block;
+            position: absolute;
+            width: 389px;
+            height: 389px;
+            left: 0;
+            bottom: 0;
+            margin-left: -200px;
+        }
+        @include desktop {
+            width: 646px;
+            height: 646px;
+            left: auto;
+            right: 0;
+            margin: 0 -350px 0 0;
         }
     }
 

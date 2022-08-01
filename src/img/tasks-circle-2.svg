@@ -1,0 +1,19 @@
+<svg width="1095" height="1095" viewBox="0 0 1095 1095" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<circle id="circle1" cx="557.5" cy="547.5" r="537" stroke="url(#paint0_linear_1400_8841)" stroke-dasharray="3.13 3.13"/>
+<circle r="8" fill="#FBFBFB">
+    <animateMotion dur="12s" begin="6s" repeatCount="indefinite">
+      <mpath xlink:href="#circle1"/>
+    </animateMotion>
+</circle>
+<circle r="8" fill="#FBFBFB">
+    <animateMotion dur="12s" repeatCount="indefinite">
+      <mpath xlink:href="#circle1"/>
+    </animateMotion>
+</circle>
+<defs>
+<linearGradient id="paint0_linear_1400_8841" x1="438.581" y1="750.571" x2="275.196" y2="-5.04903e-05" gradientUnits="userSpaceOnUse">
+<stop stop-color="#D9F1FB"/>
+<stop offset="1" stop-color="#D9F1FB" stop-opacity="0"/>
+</linearGradient>
+</defs>
+</svg>

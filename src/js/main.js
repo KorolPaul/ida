@@ -159,3 +159,20 @@ if (Cookies) {
         cookiesBanner.style.display = 'block';
     }
 }
+
+/* typing */
+const typingElements = document.querySelectorAll('.typing');
+function type(element) {
+    const text = element.textContent;
+    element.innerText = '';
+
+    text.split('').forEach((char, index) => {
+        setTimeout(() => {
+            element.textContent = element.textContent + char;
+        }, 150 * index);
+    })
+    
+}
+typingElements.forEach(el => {
+    type(el);
+});

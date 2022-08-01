@@ -1,5 +1,6 @@
 .contact-form {
     @include tablet {
+        position: relative;
         box-sizing: border-box;
         padding: 80px;
         border: 1px solid #000;
@@ -7,6 +8,22 @@
         display: flex;
         flex-direction: column;
         align-items: center;
+    }
+
+    &::before {
+        @include tablet {
+            content: '';
+            background-color: $bg_color;
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 60px;
+            width: 60px;
+            transform: rotate(-45deg);
+            border-bottom: 1px solid $color;
+            left: -30px;
+            top: -31px;
+        }
     }
 
     &_title {

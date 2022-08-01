@@ -12,6 +12,8 @@
                 .2s $easingSmooth border;
     @include tablet {
         padding: 24px 40px;
+        display: grid;
+        grid-template-columns: 55% 45%;
     }
     @include desktop {
         padding: 35px 52px;
@@ -51,38 +53,46 @@
         display: block;
         text-transform: uppercase;
         @include tablet {
+            grid-row: 1;
+            grid-column: 1;
             font-size: 24px;
         }
         @include desktop {
             font-size: 44px;
         }
     }
-    &_content {
-        max-height: 0;
-        overflow: hidden;
-        transition: .3s $easingSmooth max-height;
-
-        .vacancy:hover &,
-        .vacancy.active & {
-            max-height: 400px;
-        }
-    }
     &_description {
         font-size: 16px;
         margin: 24px 0 30px;
+        transition: .2s $easingSmooth opacity;
+        @include tablet {
+            grid-row: 2 span;
+            grid-column: 2;
+            margin: 0 60px 0 0;
+            opacity: 0;
+        }
         @include desktop {
             font-size: 22px;
+        }
+
+        .vacancy:hover &,
+        .vacancy.active & {
+            @include tablet {
+                opacity: 1;
+            }
         }
     }
     &_tags {
         display: flex;
         gap: 20px;
+        grid-row: 2;
+        grid-column: 1;
     }
     &_tag {
         font-size: 14px;
         text-transform: uppercase;
         padding: 0 16px;
-        border: 1px dashed $bg_color;
+        border: 1px dashed $color;
         border-radius: 20px;
         height: 29px;
         line-height: 31px;
@@ -91,6 +101,11 @@
             line-height: 33px;
             font-size: 18px;
             padding: 0 24px;
+        }
+
+        .vacancy:hover &,
+        .vacancy.active & {
+            border-color: $bg_color;
         }
     }
     &_arrow {

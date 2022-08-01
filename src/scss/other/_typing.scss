@@ -1,0 +1,30 @@
+.typing {
+    position: relative;
+
+    &::after {
+        content: '';
+        width: 2px;
+        background-color: $bg_color;
+        display: inline-block;
+        height: .75em;
+        animation: blink .7s linear infinite;
+    }
+}
+
+@keyframes blink {
+    0% {
+        opacity: 1;
+    }
+    25% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+    }
+    75% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 1;
+    }
+}

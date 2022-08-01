@@ -1,0 +1,14 @@
+<svg width="664" height="646" viewBox="0 0 664 646" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<circle id="circle1" cx="323.002" cy="323" r="184.955" stroke="#C92F1A" stroke-width="3" stroke-dasharray="6 6"/>
+<circle id="circle2" cx="323" cy="323" r="321.5" stroke="black" stroke-width="3" stroke-dasharray="6 6"/>
+<circle r="8" fill="#C92F1A">
+    <animateMotion dur="9s" repeatCount="indefinite">
+      <mpath xlink:href="#circle2"/>
+    </animateMotion>
+</circle>
+<circle r="8" fill="black">
+    <animateMotion dur="6s" repeatCount="indefinite">
+      <mpath xlink:href="#circle1"/>
+    </animateMotion>
+</circle>
+</svg>

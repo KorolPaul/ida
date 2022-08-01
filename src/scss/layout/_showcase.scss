@@ -6,7 +6,7 @@
     }
     @include desktop {
         padding-top: 60px;
-        padding-bottom: 140px;
+        padding-bottom: 240px;
         position: relative;
     }
 
@@ -26,11 +26,14 @@
         font-weight: 400;
         text-transform: uppercase;
         margin: 0 0 64px;
+        min-height: 28.6px;
         @include tablet {
             font-size: 24px;
+            min-height: 31.2px;
         }
         @include desktop {
             font-size: 44px;
+            min-height: 57.2px;
         }
     }
     &_features {
@@ -63,6 +66,20 @@
             @include desktop {
                 width: 292px;
             }
+
+            &::before {
+                @include tablet {
+                    bottom: -25px;
+                    top: auto;
+                    left: 33%;
+                }
+                @include desktop {
+                    bottom: auto;
+                    top: -30px;
+                    left: 0;
+                    transform: translateX(-40%);
+                }
+            }
         }
         &:nth-child(2) {
             @include tablet {
@@ -70,14 +87,51 @@
             }
             @include desktop {
                 width: 261px;
+                margin-top: -10px;
+            }
+
+            &::before {
+                @include tablet {
+                    content: none;
+                }
+                @include desktop {
+                    content: '';
+                    top: auto;
+                    bottom: -90px;
+                    transform: translateX(-40%);
+                }
+            }
+            &::after {
+                @include tablet {
+                    height: 324px;
+                }
             }
         }
         &:nth-child(3) {
             @include tablet {
                 margin-top: -20px;
+
             }
             @include desktop {
                 width: 280px;
+                margin-top: 60px;
+            }
+
+            &::before {
+                @include tablet {
+                    transform: translateX(-40%);
+                    top: -13px;
+                }
+                @include desktop {
+                    top: -90px;
+                }
+            }
+            &::after {
+                @include tablet {
+                    height: 349px;
+                    top: -13px;
+                    transform: none;
+                }
             }
         }
 
@@ -92,14 +146,23 @@
         }
         &::after {
             content: '';
-            height: 14px;
-            width: 14px;
             position: absolute;
-            left: 0;
-            top: 24px;
-            background-color: $cRed;
-            border-radius: 50%;
+            left: -25px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: repeating-linear-gradient(0deg, #fff, transparent 2px);
+            mask: linear-gradient(0deg, rgba(#fff, 0), rgba(#fff, 1) 50%, rgba(#fff, 1) 50%, rgba(#fff, 0) 100%);
+            width: 6px;
         }
+    }
+    &_feature-dot {
+        height: 14px;
+        width: 14px;
+        position: absolute;
+        left: 0;
+        top: 24px;
+        background-color: $cRed;
+        border-radius: 50%;
     }
     &_down {
         width: 161px;
