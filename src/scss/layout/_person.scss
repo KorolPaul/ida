@@ -9,6 +9,9 @@
         position: relative;
         margin: 0 0 8px;
         @include tablet {
+            width: 220px;
+        }
+        @include desktop {
             width: 100%;
         }
     }

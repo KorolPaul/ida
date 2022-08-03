@@ -103,9 +103,9 @@
         margin: 24px 0 30px;
         position: relative;
         z-index: 2;
-        color: $bg_color;
         transition: .2s $easingSmooth opacity;
         @include tablet {
+            color: $bg_color;
             grid-row: 2 span;
             grid-column: 2;
             margin: 0 60px 0 0;

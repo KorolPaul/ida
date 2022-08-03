@@ -74,10 +74,14 @@
     color: $color;
     position: relative;
     z-index: 1;
+    max-width: 350px;
+    max-height: 350px;
     @include tablet {
         width: 444px;
         height: 444px;
         margin-top: -155px;
+        max-width: none;
+        max-height: none;
     }
     @include desktop {
         margin-top: -370px;

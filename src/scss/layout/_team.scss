@@ -43,6 +43,7 @@
             left: auto;
             right: 0;
             margin: 0 -350px 0 0;
+            bottom: 0;
         }
     }
 
@@ -50,5 +51,11 @@
         @include desktop {
             overflow: visible;
         }
+    }
+    .tns-controls {
+        position: absolute;
+        right: 0;
+        top: -77px;
+        width: 50%;
     }
 }

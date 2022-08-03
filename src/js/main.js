@@ -40,12 +40,12 @@ function closeAllOpened() {
     document.querySelectorAll('.filters_content').forEach(el => el.classList.remove('opened'));
 }
 
-const fadeElement = document.querySelector('.fade');
-if (fadeElement) {
-    fadeElement.addEventListener('click', closeAllOpened);
-}
+// const fadeElement = document.querySelector('.fade');
+// if (fadeElement) {
+//     fadeElement.addEventListener('click', closeAllOpened);
+// }
 
-const menuLinkElements = document.querySelectorAll('.menu_link');
+const menuLinkElements = document.querySelectorAll('.menu_link, .menu_close');
 menuLinkElements.forEach(el => el.addEventListener('click', () => document.body.classList.remove('menu-opened')));
 
 const menuAnchorsElements = document.querySelectorAll('a[name]');
@@ -73,6 +73,7 @@ menuAnchorsElements.forEach(el => {
 });
 
 let wheelTimeoutId = 0
+document.body.classList.add('menu-active');
 document.addEventListener(wheelEvent, function () {
     clearTimeout(wheelTimeoutId);
     document.body.classList.add('menu-active');

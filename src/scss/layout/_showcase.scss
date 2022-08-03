@@ -10,6 +10,20 @@
         position: relative;
     }
 
+    &::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 40px;
+        height: 40px;
+        background: linear-gradient(45deg, #fff, #fff 50%, #000 50%, #000);
+        @include desktop {
+            width: 40px;
+            height: 40px;
+        }
+    }
+
     &_title {
         font-size: 56px;
         line-height: .9;
