@@ -7,7 +7,6 @@
     @include desktop {
         padding-top: 60px;
         padding-bottom: 240px;
-        position: relative;
     }
 
     &::after {
@@ -54,12 +53,14 @@
         @include tablet {
             display: flex;
             flex-wrap: wrap;
-            gap: 30px;
-            justify-content: flex-end;
+            gap: 50px;
+            min-height: 400px;
+            position: relative;
         }
         @include desktop {
             justify-content: flex-start;
             flex-wrap: nowrap;
+            min-height: none;
         }
     }
     &_feature {
@@ -71,14 +72,30 @@
         text-transform: uppercase;
         @include tablet {
             width: 35%;
+            max-width: 238px;
+            position: absolute;
+        }
+        @include desktop {
+            position: relative;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
         }
 
         &:nth-child(1) {
             @include tablet {
-                margin: 70px 0 0;
+                left: 0;
+                top: 20%;
+                width: 225px;
             }
             @include desktop {
+                margin: 70px 0 0;
                 width: 292px;
+                top: auto;
+                right: auto;
+                bottom: auto;
+                left: auto;
             }
 
             &::before {
@@ -97,11 +114,19 @@
         }
         &:nth-child(2) {
             @include tablet {
-                width: 60%;
+                top: 0;
+                left: 50%;
+                width: 278px;
+                transform: translateX(-50%);
             }
             @include desktop {
                 width: 261px;
                 margin-top: -10px;
+                transform: none;
+                top: auto;
+                right: auto;
+                bottom: auto;
+                left: auto;
             }
 
             &::before {
@@ -111,7 +136,7 @@
                 @include desktop {
                     content: '';
                     top: auto;
-                    bottom: -40px;
+                    bottom: 0;
                     margin-left: -161px;
                 }
             }
@@ -125,20 +150,29 @@
         &:nth-child(3) {
             @include tablet {
                 margin-top: -20px;
+                bottom: 0;
+                right: 0;
+                width: 228px;
 
             }
             @include desktop {
                 width: 280px;
-                margin-top: 60px;
+                margin-top: 90px;
+                position: relative;
+                top: auto;
+                right: auto;
+                bottom: auto;
+                left: auto;
             }
 
             &::before {
                 @include tablet {
-                    margin-left: -100px;
-                    top: -13px;
+                    margin-left: -150px;
+                    top: -70px;
                 }
                 @include desktop {
                     top: -90px;
+                    margin-left: -120px;
                 }
             }
             &::after {
@@ -147,19 +181,25 @@
                     top: -13px;
                     margin-top: -115px;
                 }
+                @include desktop {
+                    top: 25px;
+                }
             }
         }
 
         &::before {
             content: '';
             border-top: 1px dashed currentColor;
-            mask: linear-gradient(90deg, rgba(#fff, 0), rgba(#fff, 1) 50%, rgba(#fff, 1) 50%, rgba(#fff, 0) 100%);
+            mask: linear-gradient(90deg, rgba(#fff, 0), rgba(#fff, 0) 20%, rgba(#fff, 1) 50%, rgba(#fff, 1) 50%, rgba(#fff, 0) 80%, rgba(#fff, 0) 100%);
             position: absolute;
             left: 0;
             top: 0;
             transform-origin: left center;
             animation: draw-horizontal 1.5s $easingSmooth .01s forwards;
             width: 310px;
+            @include desktop {
+                mask: linear-gradient(90deg, rgba(#fff, 0), rgba(#fff, 1) 50%, rgba(#fff, 1) 50%, rgba(#fff, 0) 100%);
+            }
         }
         &::after {
             content: '';
@@ -193,7 +233,7 @@
         }
         @include desktop {
             position: absolute;
-            right: 0;
+            right: 100px;
             bottom: 100px;
         }
 
