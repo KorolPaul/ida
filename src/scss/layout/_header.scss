@@ -5,7 +5,7 @@
     right: 0;
     height: 100px;
     background: url(#{$img}/header-bg.svg) no-repeat 100% top / auto 100%;
-    z-index: 1;
+    z-index: 10;
     @include desktop {
         height: 50px;
         background-size: 50px 50px;
