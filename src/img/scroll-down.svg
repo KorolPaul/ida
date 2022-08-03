@@ -1,4 +1,27 @@
 <svg width="162" height="161" viewBox="0 0 162 161" fill="none" xmlns="http://www.w3.org/2000/svg">
+<defs>
+    <style>
+        .circle {
+            stroke-dasharray: 504;
+            stroke-dashoffset: 504;
+            animation: clock-animation 1s linear forwards;
+            transform: rotate(-90deg);
+            transform-origin: center;
+        }
+
+        @keyframes clock-animation {
+            0% {
+                stroke-dashoffset: 0;
+            }
+            100% {
+                stroke-dashoffset: -504;
+            }
+        }
+    </style>
+
+
+</defs>
 <circle cx="81.4023" cy="80.5" r="80" stroke="#fff" stroke-dasharray="2 2"/>
+<circle class="circle" cx="81.4023" cy="80.5" r="80" stroke="#000" stroke-dasharray="2 2" stroke-width="3" />
 <path d="M86.9128 43.0104H74.8919L73.8313 98.5183L61.1034 85.7904L51.911 94.9828L80.5488 123.621L109.54 94.6292L100.348 85.4368L86.5592 99.2254L86.9128 43.0104Z" stroke="#fff" stroke-dasharray="2 2"/>
 </svg>

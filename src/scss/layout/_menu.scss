@@ -14,7 +14,8 @@
     top: 0;
     width: 100%;
     transform: translateX(0);
-    transition: .6s $easingSmooth transform;
+    transition: .6s $easingSmooth transform,
+                .3s $easingSmooth opacity .1s;
     @include desktop {
         background: none;
         right: 100px;
@@ -25,8 +26,12 @@
         z-index: 11;
         mix-blend-mode: difference;
         overflow-y: visible;
+        opacity: 0;
     }
 
+    .menu-active & {
+        opacity: 1;
+    }
     .menu-opened & {
         transform: translateX(-100%);
     }
@@ -147,8 +152,9 @@
             margin: 8px 0;
         }
 
-        &:hover {
-            color: $cGreen;
+        &:hover,
+        &.active {
+            color: $cRed;
         }
 
         .header__static & {

@@ -1,7 +1,7 @@
 const wheelEvent = 'onwheel' in document.createElement('div') ? 'wheel' : 'mousewheel';
 const thresholdSteps = [...Array(10).keys()].map(i => i / 10);
 const isMobile = window.innerWidth <= 768
-const isDesktop = window.innerWidth >= 1070
+const isDesktop = window.innerWidth >= 1440
 
 // sliders
 const teamSlider = document.querySelectorAll('.team_slider');
@@ -17,7 +17,7 @@ teamSlider.forEach(el => {
         controls: true,
         loop: false,
         responsive: {
-            1070: {
+            1440: {
                 disable: true
             }
         }
@@ -46,7 +46,40 @@ if (fadeElement) {
 }
 
 const menuLinkElements = document.querySelectorAll('.menu_link');
-menuLinkElements.forEach(el => el.addEventListener('click', () => document.body.classList.toggle('menu-opened')));
+menuLinkElements.forEach(el => el.addEventListener('click', () => document.body.classList.remove('menu-opened')));
+
+const menuAnchorsElements = document.querySelectorAll('a[name]');
+menuAnchorsElements.forEach(el => {
+    function setActiveMenuLink(name) {
+        menuLinkElements.forEach(el => el.classList.remove('active'));
+        document.querySelector(`.menu_link[href="#${name}"]`).classList.add('active');
+    }
+
+    const observerCallback = function (e) {
+        const { target, intersectionRatio } = e[0];
+        const name = target.getAttribute('name');
+
+        if (intersectionRatio > 0.5) {
+            setActiveMenuLink(name);
+        }
+    };
+
+    const observer = new IntersectionObserver(observerCallback, {
+        rootMargin: '0px 0px 0px 0px',
+        threshold: thresholdSteps,
+        root: null
+    });
+    observer.observe(el);
+});
+
+let wheelTimeoutId = 0
+document.addEventListener(wheelEvent, function () {
+    clearTimeout(wheelTimeoutId);
+    document.body.classList.add('menu-active');
+    wheelTimeoutId = setTimeout(() => {
+        document.body.classList.remove('menu-active');
+    }, 1000);
+});
 
 /* Popup */
 const popupToggleElements = document.querySelectorAll('.js-popup-toggle');
@@ -131,8 +164,6 @@ initTabs()
 const personElements = document.querySelectorAll('.person');
 personElements.forEach(el => {
     el.addEventListener('mouseenter', function(e) {
-        console.log(e);
-
         personElements.forEach(p => p.classList.remove('active'));
         e.currentTarget.classList.add('active')
     });
@@ -176,3 +207,97 @@ function type(element) {
 typingElements.forEach(el => {
     type(el);
 });
+
+/* vacancies table */
+const vacancyElements = document.querySelectorAll('.vacancy');
+const vacanciesIndicatorElement = document.querySelector('.vacancies_indicator');
+
+function activateRow(e) {
+    const { height } = e.currentTarget.getBoundingClientRect();
+    const { offsetTop } = e.currentTarget;
+    
+    vacanciesIndicatorElement.style.transform = `translateY(${offsetTop}px) scaleY(${height + 2})`;
+
+    vacancyElements.forEach(el => el.classList.remove('active'));
+    e.currentTarget.classList.add('active');
+}
+
+vacancyElements.forEach(el => {
+    el.addEventListener('mouseenter', activateRow);
+});
+
+/* carousel slider */
+const carouselSliders = document.querySelectorAll('.carousel');
+const carouselRows = document.querySelectorAll('.carousel_row');
+
+carouselSliders.forEach(carousel => {
+    function scrollRow(e) {
+        const isDown = e.deltaY > 0;
+        const step = 40;
+
+        function translate(el, isReverse) {
+            const isForward = isReverse ? !isDown : isDown;
+            const transformString = el.style.transform;
+            const previuosX = transformString.substring(transformString.indexOf('(') + 1, transformString.indexOf('px'));
+
+            if (isForward) {
+                el.style.transform = `translateX(${Number(previuosX) - step}px)`;
+            } else {
+                el.style.transform = `translateX(${Number(previuosX) + step}px)`;
+            }
+        }
+
+        if (carouselRows[0]) {
+            translate(carouselRows[0])
+        }
+        if (carouselRows[1]) {
+            translate(carouselRows[1], true)
+        }
+        if (carouselRows[2]) {
+            translate(carouselRows[2])
+        }
+        if (carouselRows[3]) {
+            translate(carouselRows[3], true)
+        }
+    }
+
+    const observerCallback = function (e) {
+        const { boundingClientRect, intersectionRatio } = e[0];
+        // const ratio = boundingClientRect.height / 2 - boundingClientRect.y;
+    
+        if (intersectionRatio > 0.1) {
+            document.addEventListener(wheelEvent, scrollRow)
+        } else {
+            document.removeEventListener(wheelEvent, scrollRow)
+        }
+    };
+    
+    const observer = new IntersectionObserver(observerCallback, {
+        rootMargin: '0px 0px 0px 0px',
+        threshold: thresholdSteps,
+        root: null
+    });
+    observer.observe(carousel);
+});
+
+carouselRows.forEach((el) => el.style.transform = 'translateX(0)');
+
+/* animation */
+const animatedElements = document.querySelectorAll('.vacancies, .task, .person_header, .carousel');
+animatedElements.forEach(el => {
+    const observerCallback = function (e) {
+        const { target, intersectionRatio } = e[0];
+        if (intersectionRatio > 0.6) {
+            target.classList.add('animated');
+        }
+    };
+
+    const observer = new IntersectionObserver(observerCallback, {
+        rootMargin: '0px 0px 0px 0px',
+        threshold: thresholdSteps,
+        root: null
+    });
+    observer.observe(el);
+});
+
+carouselRows.forEach((el) => el.style.transform = 'translateX(0)');

@@ -1,5 +1,4 @@
 .carousel {
-    overflow: hidden;
     margin-left: -$indent;
     margin-right: -$indent;
 
@@ -7,9 +6,16 @@
         display: flex;
         gap: 18px;
         margin: 0 0 12px;
+        transition: .3s $easingSmooth transform;
         @include tablet {
             margin-bottom: 25px;
             gap: 36px;
+        }
+
+        &:nth-child(even) {
+            @include tablet {
+                margin-left: -100%;
+            }
         }
     }
     &_item {

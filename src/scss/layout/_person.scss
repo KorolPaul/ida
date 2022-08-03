@@ -112,7 +112,8 @@
             width: 100%;
         }
 
-        .active & {
+        .active &,
+        .active &.animated {
             @include desktop {
                 transform: rotate(-5deg);
             }

@@ -1,17 +1,55 @@
-<svg width="709" height="709" viewBox="0 0 709 709" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
-<g>
-<circle cx="354.5" cy="354.5" r="353.5" stroke="url(#paint0_linear_1396_2233)" stroke-opacity="0.74" stroke-width="2" stroke-dasharray="2 2"/>
-</g>
+<svg style="background: #000" width="709" height="709" viewBox="0 0 709 709" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
 <defs>
-<filter id="filter0_b_1396_2233" x="-6" y="-6" width="721" height="721" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-<feFlood flood-opacity="0" result="BackgroundImageFix"/>
-<feGaussianBlur in="BackgroundImage" stdDeviation="3"/>
-<feComposite in2="SourceAlpha" operator="in" result="effect1_backgroundBlur_1396_2233"/>
-<feBlend mode="normal" in="SourceGraphic" in2="effect1_backgroundBlur_1396_2233" result="shape"/>
-</filter>
-<linearGradient id="paint0_linear_1396_2233" x1="629.126" y1="558.405" x2="17.7153" y2="147.537" gradientUnits="userSpaceOnUse">
-<stop stop-color="#DCDCDC"/>
-<stop offset="1" stop-color="#DCDCDC" stop-opacity="0"/>
-</linearGradient>
+    <style>
+        .circle {
+            stroke-dasharray: 2225;
+            stroke-dashoffset: 2225;
+            animation: clock-animation 1s linear forwards;
+            transform: rotate(-90deg);
+            transform-origin: center;
+        }
+
+        @keyframes clock-animation {
+            0% {
+                stroke-dashoffset: 2225;
+            }
+            100% {
+                stroke-dashoffset: 0;
+            }
+        }
+    </style>
+
+    <mask id="cut">
+      <circle
+        class="circle"
+        cx="354.5"
+        cy="354.5"
+        r="353.5"
+        stroke="#fff"
+        stroke-width="700"
+      />
+    </mask>
+    <filter id="filter0_b_1396_2233" x="-6" y="-6" width="721" height="721" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+        <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+        <feGaussianBlur in="BackgroundImage" stdDeviation="3"/>
+        <feComposite in2="SourceAlpha" operator="in" result="effect1_backgroundBlur_1396_2233"/>
+        <feBlend mode="normal" in="SourceGraphic" in2="effect1_backgroundBlur_1396_2233" result="shape"/>
+    </filter>
+    <linearGradient id="paint0_linear_1396_2233" x1="629.126" y1="558.405" x2="17.7153" y2="147.537" gradientUnits="userSpaceOnUse">
+        <stop stop-color="#DCDCDC"/>
+        <stop offset="1" stop-color="#DCDCDC" stop-opacity="0"/>
+    </linearGradient>
 </defs>
+<g>
+    <circle 
+        cx="354.5"
+        cy="354.5"
+        r="353.5"
+        stroke="url(#paint0_linear_1396_2233)"
+        stroke-opacity="0.74"
+        stroke-width="2"
+        stroke-dasharray="2 2"
+        mask="url(#cut)"
+    />
+</g>
 </svg>

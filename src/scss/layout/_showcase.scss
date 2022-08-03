@@ -77,7 +77,7 @@
                     bottom: auto;
                     top: -30px;
                     left: 0;
-                    transform: translateX(-40%);
+                    margin-left: -120px;
                 }
             }
         }
@@ -97,13 +97,14 @@
                 @include desktop {
                     content: '';
                     top: auto;
-                    bottom: -90px;
-                    transform: translateX(-40%);
+                    bottom: -40px;
+                    margin-left: -161px;
                 }
             }
             &::after {
                 @include tablet {
                     height: 324px;
+                    margin-top: -162px;
                 }
             }
         }
@@ -119,7 +120,7 @@
 
             &::before {
                 @include tablet {
-                    transform: translateX(-40%);
+                    margin-left: -100px;
                     top: -13px;
                 }
                 @include desktop {
@@ -130,7 +131,7 @@
                 @include tablet {
                     height: 349px;
                     top: -13px;
-                    transform: none;
+                    margin-top: -115px;
                 }
             }
         }
@@ -142,17 +143,19 @@
             position: absolute;
             left: 0;
             top: 0;
-            right: 0;
+            transform-origin: left center;
+            animation: draw-horizontal 1.5s $easingSmooth .01s forwards;
+            width: 310px;
         }
         &::after {
             content: '';
             position: absolute;
             left: -25px;
             top: 50%;
-            transform: translateY(-50%);
             background: repeating-linear-gradient(0deg, #fff, transparent 2px);
-            mask: linear-gradient(0deg, rgba(#fff, 0), rgba(#fff, 1) 50%, rgba(#fff, 1) 50%, rgba(#fff, 0) 100%);
+            mask: linear-gradient(0deg, rgba(#fff, 0), rgba(#fff, 0) 20%, rgba(#fff, 1) 50%, rgba(#fff, 1) 50%, rgba(#fff, 0) 80%, rgba(#fff, 0) 100%);
             width: 6px;
+            animation: draw-vertical 1.5s $easingSmooth .01s forwards;
         }
     }
     &_feature-dot {
@@ -186,5 +189,22 @@
         &:active {
             opacity: .8;
         }
+    }
+}
+
+@keyframes draw-horizontal {
+    0% {
+        transform: scaleX(0);
+    }
+    100% {
+        transform: scaleX(1);
+    }
+}
+@keyframes draw-vertical {
+    0% {
+        transform: scaleY(0);
+    }
+    100% {
+        transform: scaleY(1);
     }
 }
