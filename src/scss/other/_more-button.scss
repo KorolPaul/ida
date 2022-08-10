@@ -1,0 +1,18 @@
+.more-button {
+    border-color: $cRed;
+    color: $cRed;
+    background-color: transparent;
+    margin: 56px auto 0;
+    display: block;
+    transition: .2s $easing color,
+                .2s $easing opacity,
+                .2s $easing background-color;
+
+    &:hover {
+        background-color: $cRed;
+        color: $bg_color;
+    }
+    &:active {
+        opacity: .6;
+    }
+}

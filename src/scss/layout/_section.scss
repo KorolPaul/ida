@@ -2,7 +2,7 @@
     background-color: $bg_color;
     padding: 80px 0 0;
     position: relative;
-    overflow: hidden;
+    // overflow: hidden;
     @include desktop {
         padding-top: 120px;
     }

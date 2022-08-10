@@ -95,6 +95,10 @@ ul {
     }
 }
 
+main {
+    overflow: hidden;
+}
+
 a[name] {
     position: relative;
     top: -50px;

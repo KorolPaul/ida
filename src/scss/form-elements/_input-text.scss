@@ -14,20 +14,17 @@ input[type="tel"] {
     font: 18px $font-family;
     height: 55px;
     line-height: 34px;
-    padding: 0;
+    padding: 0 0 0 8px;
     width: 100%;
     transition: .2s ease-in border-color,
-                .2s ease-in color,
-                .2s ease-in padding;
+                .2s ease-in color;
 
     &:focus {
         color: $color;
         border-color: $color;
-        padding-left: 8px
     }
 
     .error & {
-        @include placeholder-color($cRed);
         color: $cRed;
     }
 }

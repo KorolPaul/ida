@@ -29,7 +29,8 @@
         opacity: 0;
     }
 
-    .menu-active & {
+    .menu-active &,
+    .header__static & {
         opacity: 1;
     }
     .menu-opened & {
@@ -109,6 +110,8 @@
         position: absolute;
         right: 18px;
         top: 40px;
+        font-family: $font-family;
+        font-weight: normal;
         transition: .2s $easingSmooth opacity,
                     .2s $easingSmooth color;
 
@@ -136,8 +139,7 @@
 
         .header__static & {
             @include desktop {
-                flex-direction: row;
-                gap: 24px;
+                display: none;
             }
         }
     }

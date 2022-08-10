@@ -72,15 +72,18 @@ menuAnchorsElements.forEach(el => {
     observer.observe(el);
 });
 
-let wheelTimeoutId = 0
-document.body.classList.add('menu-active');
-document.addEventListener(wheelEvent, function () {
-    clearTimeout(wheelTimeoutId);
+const staticHeaderEl = document.querySelector('.header__static')
+if (!staticHeaderEl) {
+    let wheelTimeoutId = 0
     document.body.classList.add('menu-active');
-    wheelTimeoutId = setTimeout(() => {
-        document.body.classList.remove('menu-active');
-    }, 1000);
-});
+    document.addEventListener(wheelEvent, function () {
+        clearTimeout(wheelTimeoutId);
+        document.body.classList.add('menu-active');
+        wheelTimeoutId = setTimeout(() => {
+            document.body.classList.remove('menu-active');
+        }, 1000);
+    });
+}
 
 /* Popup */
 const popupToggleElements = document.querySelectorAll('.js-popup-toggle');
@@ -201,13 +204,15 @@ function type(element) {
     text.split('').forEach((char, index) => {
         setTimeout(() => {
             element.textContent = element.textContent + char;
-        }, 150 * index);
+        }, 70 * index);
     })
     
 }
-typingElements.forEach(el => {
-    type(el);
-});
+setTimeout(() => {
+    typingElements.forEach(el => {
+        type(el);
+    });
+}, 400)
 
 /* vacancies table */
 const vacancyElements = document.querySelectorAll('.vacancy');
@@ -216,8 +221,9 @@ const vacanciesIndicatorElement = document.querySelector('.vacancies_indicator')
 function activateRow(e) {
     const { height } = e.currentTarget.getBoundingClientRect();
     const { offsetTop } = e.currentTarget;
-    
-    vacanciesIndicatorElement.style.transform = `translateY(${offsetTop}px) scaleY(${height + 2})`;
+    const indicatorHeight = vacanciesIndicatorElement.getBoundingClientRect().height
+
+    vacanciesIndicatorElement.style.clipPath = `inset(${offsetTop}px 0 ${indicatorHeight - offsetTop - height - 2}px 0)`;
 
     vacancyElements.forEach(el => el.classList.remove('active'));
     e.currentTarget.classList.add('active');
@@ -282,6 +288,13 @@ carouselSliders.forEach(carousel => {
 });
 
 carouselRows.forEach((el) => el.style.transform = 'translateX(0)');
+
+if (lightGallery) {
+    lightGallery(document.getElementById('lightgallery'), {
+        licenseKey: '0000-0000-000-0000',
+        speed: 500,
+    });
+}
 
 /* animation */
 const animatedElements = document.querySelectorAll('.vacancies, .task, .person_header, .carousel');

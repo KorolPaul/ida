@@ -6,6 +6,7 @@
     @include desktop {
         height: 100vh;
         padding: 0;
+        min-height: 900px;
     }
 
     &_slider {
@@ -35,6 +36,7 @@
             height: 389px;
             left: 0;
             bottom: 0;
+            transform: scaleX(-1);
             margin-left: -200px;
         }
         @include desktop {
@@ -43,7 +45,8 @@
             left: auto;
             right: 0;
             margin: 0 -350px 0 0;
-            bottom: 0;
+            bottom: -300px;
+            z-index: 1;
         }
     }
 

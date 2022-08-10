@@ -1,6 +1,7 @@
 .form {
     &_row {
         margin: 0 0 40px;
+        position: relative;
         @include desktop {
             width: 412px;
         }
@@ -16,6 +17,23 @@
         @include desktop {
             flex-grow: 1;
             margin-bottom: 80px;
+        }
+    }
+    &_label {
+        position: absolute;
+        left: 0;
+        top: 17px;
+        font: 18px $font-family;
+        transform-origin: left top;
+        transition: .2s $easingSmooth transform, .2s $easingSmooth color;
+
+        input:focus + &,
+        input:not(:placeholder-shown) + & {
+            transform: scale(.8) translateY(-35px);
+        }
+
+        .error & {
+            color: $cRed;
         }
     }
 }
