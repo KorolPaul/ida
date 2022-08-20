@@ -11,6 +11,9 @@
         background-color: $color;
         color: $bg_color;
     }
+    &__no-indent {
+        padding-top: 0;
+    }
 
     &_holder {
         @include layout;

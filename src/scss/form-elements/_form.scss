@@ -28,7 +28,9 @@
         transition: .2s $easingSmooth transform, .2s $easingSmooth color;
 
         input:focus + &,
-        input:not(:placeholder-shown) + & {
+        input:not(:placeholder-shown) + &б
+        textarea:focus + &,
+        textarea:not(:placeholder-shown) + & {
             transform: scale(.8) translateY(-35px);
         }
 

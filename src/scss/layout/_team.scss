@@ -10,11 +10,22 @@
     }
 
     &_slider {
+        display: flex;
+        overflow-x: auto;
+        gap: 16px;
+        padding: 16px;
+        background-color: #E4E4E4;
+        border-top: 1px dashed $cGray;
+        border-bottom: 1px dashed $cGray;
+        margin: 0 0 40px;
+        overflow: visible;
         @include desktop {
-            position: relative;
-            display: flex;
-            font-size: 0;
-            padding-bottom: 390px;
+            border: none;
+            padding: 0;
+            background-color: transparent;
+            gap: 0;
+            overflow: auto;
+            padding: 0 30px !important;
         }
 
         & > div {
@@ -25,6 +36,60 @@
                     margin-top: 54px;
                 }
             }
+        }
+    }
+    &_slider-image-wrapper {
+        width: 70px;
+        position: relative;
+        margin: 0 0 8px;
+        mask: linear-gradient(45deg, 
+        rgba(#fff, 0),
+        rgba(#fff, 0) 8%,
+            rgba(#fff, 1) 8%,
+            rgba(#fff, 1) 92%,
+            rgba(#fff, 0) 92%,
+            rgba(#fff, 0) 100%);
+        transition: .2s $easingSmooth transform;
+        @include desktop {
+            width: 310px;
+        }
+
+        &.active,
+        &.active.animated {
+            @include desktop {
+                transform: rotate(-5deg);
+            }
+        }
+
+        &::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url(#{$img}/person-mask.png) no-repeat center / 100%;
+            mix-blend-mode: screen;
+            opacity: 0;
+            transition: .3s $easingSmooth opacity;
+        }
+
+        &.active::after {
+            opacity: 1;
+        }
+    }
+    &_slider-image {
+        filter: grayscale(1);
+    }
+    &_slider-meta {
+        color: $color;
+        position: absolute;
+        left: 30px;
+        top: 100%;
+    }
+    &_content {
+        @include desktop {
+            display: flex;
         }
     }
     &_circle {
@@ -51,8 +116,10 @@
     }
 
     .tns-ovh {
+        margin: 0 #{-$indent};
         @include desktop {
             overflow: visible;
+            margin: 0;
         }
     }
     .tns-controls {
@@ -60,5 +127,9 @@
         right: 0;
         top: -77px;
         width: 50%;
+        @include desktop {
+            position: static;
+            margin: 0;
+        }
     }
 }

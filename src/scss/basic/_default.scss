@@ -99,6 +99,10 @@ main {
     overflow: hidden;
 }
 
+.no-overflow {
+    overflow: visible;
+}
+
 a[name] {
     position: relative;
     top: -50px;

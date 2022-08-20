@@ -18,8 +18,8 @@
                 .3s $easingSmooth opacity .1s;
     @include desktop {
         background: none;
-        right: 100px;
-        top: 60px;
+        right: 30px;
+        top: 30px;
         left: auto;
         width: auto;
         height: auto;
@@ -30,7 +30,8 @@
     }
 
     .menu-active &,
-    .header__static & {
+    .header__static &,
+    &:hover {
         opacity: 1;
     }
     .menu-opened & {
@@ -51,8 +52,8 @@
             width: 705px;
             height: 705px;
             position: absolute;
-            right: -445px;
-            top: -440px;
+            right: -465px;
+            top: -460px;
         }
 
         .header__static & {
@@ -157,6 +158,11 @@
         &:hover,
         &.active {
             color: $cRed;
+        }
+
+        .menu:hover &:hover,
+        .menu:hover &.active {
+            filter: hue-rotate(170deg);
         }
 
         .header__static & {

@@ -1,14 +1,16 @@
 <svg width="725" height="725" viewBox="0 0 725 725" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <path id="circle1" d="M9,353.5a353.5,353.5 0 1,0 707,0a353.5,353.5 0 1,0 -707,0" stroke="url(#paint0_linear_1400_8846)" stroke-dasharray="3.13 3.13"/>
 <circle r="8" fill="#FBFBFB">
-    <animateMotion dur="8s" begin="4s" repeatCount="indefinite">
+    <animateMotion dur="8s" begin="4s" repeatCount="indefinite" opacity="0">
       <mpath xlink:href="#circle1"/>
     </animateMotion>
+    <animate attributeType="CSS" attributeName="opacity" from="0" to="1" dur="0.2s" repeatCount="1" begin="4s" fill="freeze" />
 </circle>
 <circle r="8" fill="#FBFBFB">
     <animateMotion dur="8s" repeatCount="indefinite">
       <mpath xlink:href="#circle1"/>
     </animateMotion>
+    <animate attributeType="CSS" attributeName="opacity" from="0" to="1" dur="0.5s" repeatCount="1"  fill="freeze"  />
 </circle>
 <defs>
 <linearGradient id="paint0_linear_1400_8846" x1="287.627" y1="483.235" x2="180.478" y2="-9.00003" gradientUnits="userSpaceOnUse">

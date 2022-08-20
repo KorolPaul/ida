@@ -16,9 +16,13 @@ teamSlider.forEach(el => {
         navPosition: 'bottom',
         controls: true,
         loop: false,
+        disable: true,
         responsive: {
             1440: {
-                disable: true
+                disable: false,
+                items: 4,
+                gutter: 0,
+                autoWidth: true,
             }
         }
     });
@@ -52,7 +56,10 @@ const menuAnchorsElements = document.querySelectorAll('a[name]');
 menuAnchorsElements.forEach(el => {
     function setActiveMenuLink(name) {
         menuLinkElements.forEach(el => el.classList.remove('active'));
-        document.querySelector(`.menu_link[href="#${name}"]`).classList.add('active');
+        let link = document.querySelector(`.menu_link[href="#${name}"]`);
+        if(link) {
+            link.classList.add('active');
+        }
     }
 
     const observerCallback = function (e) {
@@ -91,7 +98,7 @@ const popupToggleElements = document.querySelectorAll('.js-popup-toggle');
 function disableScroll(e) {
     const { target } = e
     let isInPopup = false;
-    
+
     function findParentPopup(el) {
         if (!el.parentElement) {
             return
@@ -105,7 +112,7 @@ function disableScroll(e) {
     }
 
     findParentPopup(target.parentElement)
-    
+
     if (!isInPopup && !target.className.includes('contact-form')) {
         e.preventDefault();
     }
@@ -140,23 +147,23 @@ popupCloseElements.forEach(el => el.addEventListener('click', (e) => {
 /* Tabs */
 function initTabs() {
     const tabsContainers = document.querySelectorAll('.tabs');
-    
+
     tabsContainers.forEach(tabContainer => {
         const tabsButtons = tabContainer.querySelectorAll('.tabs_button');
         const tabsBlocks = tabContainer.querySelectorAll('.tabs_content');
-    
+
         if (tabsButtons.length) {
             function switchTab(e) {
                 e.preventDefault();
-    
+
                 const index = e.target.dataset.tab;
                 tabsButtons.forEach(el => el.classList.remove('active'));
                 tabsBlocks.forEach(el => el.classList.remove('active'));
-    
+
                 tabsButtons[index - 1].classList.add('active');
                 tabsBlocks[index - 1].classList.add('active');
             }
-    
+
             tabsButtons.forEach(el => el.addEventListener('click', switchTab));
         }
     });
@@ -165,13 +172,35 @@ function initTabs() {
 initTabs()
 
 // Persons hover
+const personSliderElements = document.querySelectorAll('.team_slider-image-wrapper');
 const personElements = document.querySelectorAll('.person');
-personElements.forEach(el => {
-    el.addEventListener('mouseenter', function(e) {
+personSliderElements.forEach(el => {
+    el.addEventListener('click', function(e) {
+        const { currentTarget } = e;
+        personSliderElements.forEach(p => p.classList.remove('active'));
+        currentTarget.classList.add('active')
+
+        const slide = currentTarget.dataset.slide;
         personElements.forEach(p => p.classList.remove('active'));
-        e.currentTarget.classList.add('active')
+        document.querySelector(`.person[data-slide="${slide}"]`).classList.add('active');
     });
 });
+
+const personContentElements = document.querySelectorAll('.person_content');
+let personContentHeight = 0;
+
+if (isDesktop) {
+    personContentElements.forEach(el => {
+        const { height } = el.getBoundingClientRect();
+        if (height > personContentHeight) {
+            personContentHeight = height;
+        }
+    })
+    if (personContentHeight) {
+        document.querySelector('.team_slider').style.paddingBottom = personContentHeight + 80;
+    }
+}
+
 
 
 /* cookies */
@@ -206,7 +235,7 @@ function type(element) {
             element.textContent = element.textContent + char;
         }, 70 * index);
     })
-    
+
 }
 setTimeout(() => {
     typingElements.forEach(el => {
@@ -215,23 +244,27 @@ setTimeout(() => {
 }, 400)
 
 /* vacancies table */
-const vacancyElements = document.querySelectorAll('.vacancy');
-const vacanciesIndicatorElement = document.querySelector('.vacancies_indicator');
+function vacancyEl(){
+    const vacancyElements = document.querySelectorAll('.vacancy');
+    const vacanciesIndicatorElement = document.querySelector('.vacancies_indicator');
 
-function activateRow(e) {
-    const { height } = e.currentTarget.getBoundingClientRect();
-    const { offsetTop } = e.currentTarget;
-    const indicatorHeight = vacanciesIndicatorElement.getBoundingClientRect().height
+    function activateRow(e) {
+        const { height } = e.currentTarget.getBoundingClientRect();
+        const { offsetTop } = e.currentTarget;
+        const indicatorHeight = vacanciesIndicatorElement.getBoundingClientRect().height
 
-    vacanciesIndicatorElement.style.clipPath = `inset(${offsetTop}px 0 ${indicatorHeight - offsetTop - height - 2}px 0)`;
+        vacanciesIndicatorElement.style.clipPath = `inset(${offsetTop}px 0 ${indicatorHeight - offsetTop - height - 2}px 0)`;
 
-    vacancyElements.forEach(el => el.classList.remove('active'));
-    e.currentTarget.classList.add('active');
+        vacancyElements.forEach(el => el.classList.remove('active'));
+        e.currentTarget.classList.add('active');
+    }
+
+    vacancyElements.forEach(el => {
+        el.addEventListener('mouseenter', activateRow);
+    });
 }
+vacancyEl();
 
-vacancyElements.forEach(el => {
-    el.addEventListener('mouseenter', activateRow);
-});
 
 /* carousel slider */
 const carouselSliders = document.querySelectorAll('.carousel');
@@ -271,14 +304,14 @@ carouselSliders.forEach(carousel => {
     const observerCallback = function (e) {
         const { boundingClientRect, intersectionRatio } = e[0];
         // const ratio = boundingClientRect.height / 2 - boundingClientRect.y;
-    
+
         if (intersectionRatio > 0.1) {
             document.addEventListener(wheelEvent, scrollRow)
         } else {
             document.removeEventListener(wheelEvent, scrollRow)
         }
     };
-    
+
     const observer = new IntersectionObserver(observerCallback, {
         rootMargin: '0px 0px 0px 0px',
         threshold: thresholdSteps,
@@ -287,31 +320,33 @@ carouselSliders.forEach(carousel => {
     observer.observe(carousel);
 });
 
-carouselRows.forEach((el) => el.style.transform = 'translateX(0)');
-
-if (lightGallery) {
-    lightGallery(document.getElementById('lightgallery'), {
+carouselRows.forEach((el) => {
+    el.style.transform = 'translateX(0)'
+    lightGallery(el, {
         licenseKey: '0000-0000-000-0000',
         speed: 500,
     });
-}
+});
 
 /* animation */
 const animatedElements = document.querySelectorAll('.vacancies, .task, .person_header, .carousel');
-animatedElements.forEach(el => {
-    const observerCallback = function (e) {
-        const { target, intersectionRatio } = e[0];
-        if (intersectionRatio > 0.6) {
-            target.classList.add('animated');
-        }
-    };
+animateElements();
+function animateElements() {
+    animatedElements.forEach(el => {
+        const observerCallback = function (e) {
+            const {target, intersectionRatio} = e[0];
+            if (intersectionRatio > 0.6) {
+                target.classList.add('animated');
+            }
+        };
 
-    const observer = new IntersectionObserver(observerCallback, {
-        rootMargin: '0px 0px 0px 0px',
-        threshold: thresholdSteps,
-        root: null
+        const observer = new IntersectionObserver(observerCallback, {
+            rootMargin: '0px 0px 0px 0px',
+            threshold: thresholdSteps,
+            root: null
+        });
+        observer.observe(el);
     });
-    observer.observe(el);
-});
+}
 
 carouselRows.forEach((el) => el.style.transform = 'translateX(0)');

@@ -134,6 +134,11 @@
         font-size: 0;
         line-height: 0;
         transition: .2s $easing opacity;
+        @include desktop {
+            position: absolute;
+            top: 230px;
+            z-index: 2;
+        }
 
         &:hover {
             opacity: .6;
@@ -146,9 +151,15 @@
 
     button[data-controls="prev"]{
         background: url(#{$img}/prev.svg) no-repeat center / 100% auto;
+        @include desktop {
+            left: -75px;
+        }
     }
     button[data-controls="next"]{
         background: url(#{$img}/next.svg) no-repeat center / 100% auto;
+        @include desktop {
+            right: -75px;
+        }
     }
 }
 

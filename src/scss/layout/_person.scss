@@ -1,13 +1,27 @@
 .person {
+    display: none;
     @include tablet {
-        display: flex;
         gap: 20px;
+    }
+
+    &.active {
+        display: block;
+        @include tablet {
+            display: flex;
+        }
     }
 
     &_image-wrapper {
         width: 65%;
         position: relative;
         margin: 0 0 8px;
+        mask: linear-gradient(45deg, 
+            rgba(#fff, 0),
+            rgba(#fff, 0) 8%,
+            rgba(#fff, 1) 8%,
+            rgba(#fff, 1) 92%,
+            rgba(#fff, 0) 92%,
+            rgba(#fff, 0) 100%);
         @include tablet {
             width: 220px;
         }
@@ -29,11 +43,14 @@
         }
 
         .active &::after {
-            opacity: 1;
+            @include desktop {
+                opacity: 1;
+            }
         }
     }
     &_image {
         width: 100%;
+        filter: grayscale(1);
         transition: .2s $easingSmooth filter;
     }
     &_name {
@@ -74,7 +91,6 @@
             transition: .2s $easingSmooth opacity;
         }
 
-
         .active & {
             opacity: 1;
         }
@@ -86,6 +102,7 @@
         display: flex;
         flex-direction: column;
         gap: 15px;
+        display: none;
     }
     &_social-icon {
         height: 24px;
@@ -145,6 +162,7 @@
         }
         @include desktop {
             width: 100%;
+            display: none;
         }
 
         .active &,
@@ -158,9 +176,9 @@
         @include desktop {
             position: absolute;
             left: 0;
-            bottom: 0;
+            top: 580px;
             opacity: 0;
-            width: 75%;
+            width: 960px;
             pointer-events: none;
             transition: .2s $easingSmooth opacity;
         }
