@@ -79,19 +79,6 @@ menuAnchorsElements.forEach(el => {
     observer.observe(el);
 });
 
-const staticHeaderEl = document.querySelector('.header__static')
-if (!staticHeaderEl) {
-    let wheelTimeoutId = 0
-    document.body.classList.add('menu-active');
-    document.addEventListener(wheelEvent, function () {
-        clearTimeout(wheelTimeoutId);
-        document.body.classList.add('menu-active');
-        wheelTimeoutId = setTimeout(() => {
-            document.body.classList.remove('menu-active');
-        }, 1000);
-    });
-}
-
 /* Popup */
 const popupToggleElements = document.querySelectorAll('.js-popup-toggle');
 
@@ -174,16 +161,20 @@ initTabs()
 // Persons hover
 const personSliderElements = document.querySelectorAll('.team_slider-image-wrapper');
 const personElements = document.querySelectorAll('.person');
-personSliderElements.forEach(el => {
-    el.addEventListener('click', function(e) {
-        const { currentTarget } = e;
-        personSliderElements.forEach(p => p.classList.remove('active'));
-        currentTarget.classList.add('active')
 
-        const slide = currentTarget.dataset.slide;
-        personElements.forEach(p => p.classList.remove('active'));
-        document.querySelector(`.person[data-slide="${slide}"]`).classList.add('active');
-    });
+function highlightPerson(e) {
+    const { currentTarget } = e;
+    personSliderElements.forEach(p => p.classList.remove('active'));
+    currentTarget.classList.add('active')
+
+    const slide = currentTarget.dataset.slide;
+    personElements.forEach(p => p.classList.remove('active'));
+    document.querySelector(`.person[data-slide="${slide}"]`).classList.add('active');
+}
+
+personSliderElements.forEach(el => {
+    el.addEventListener('mouseenter', highlightPerson);
+    el.addEventListener('click', highlightPerson);
 });
 
 const personContentElements = document.querySelectorAll('.person_content');
@@ -204,25 +195,25 @@ if (isDesktop) {
 
 
 /* cookies */
-if (Cookies) {
-    const hasCookies = Cookies.get('CookieNotificationCookie');
-
-    const cookiesBanner = document.querySelector('.cookies');
-    const cookiesAcceptButton = document.querySelector('.cookies_button');
-
-    if (cookiesAcceptButton) {
-        cookiesAcceptButton.addEventListener('click', function (e) {
-            e.preventDefault();
-
-            cookiesBanner.style.display = 'none';
-            Cookies.set('CookieNotificationCookie', 'true', { expires: 365 });
-        });
-    }
-
-    if (cookiesBanner && !hasCookies) {
-        cookiesBanner.style.display = 'block';
-    }
-}
+// if (Cookies) {
+//     const hasCookies = Cookies.get('CookieNotificationCookie');
+// 
+//     const cookiesBanner = document.querySelector('.cookies');
+//     const cookiesAcceptButton = document.querySelector('.cookies_button');
+// 
+//     if (cookiesAcceptButton) {
+//         cookiesAcceptButton.addEventListener('click', function (e) {
+//             e.preventDefault();
+// 
+//             cookiesBanner.style.display = 'none';
+//             Cookies.set('CookieNotificationCookie', 'true', { expires: 365 });
+//         });
+//     }
+// 
+//     if (cookiesBanner && !hasCookies) {
+//         cookiesBanner.style.display = 'block';
+//     }
+// }
 
 /* typing */
 const typingElements = document.querySelectorAll('.typing');
@@ -323,7 +314,6 @@ carouselSliders.forEach(carousel => {
 carouselRows.forEach((el) => {
     el.style.transform = 'translateX(0)'
     lightGallery(el, {
-        licenseKey: '0000-0000-000-0000',
         speed: 500,
     });
 });

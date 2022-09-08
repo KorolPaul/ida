@@ -21,17 +21,26 @@
             <div class="menu-toggle_line"></div>
             <div class="menu-toggle_line"></div>
         </button>
-        <div class="menu">
-            <div class="menu_header">
-                <a href="/" class="menu_logo">IDa TECH</a>
-                <button class="menu_close">close</button>
-            </div>
-            <nav class="menu_links">
-                <a href="#vacancies" class="menu_link">вакансии</a>
-                <a href="#tasks" class="menu_link">Наши задачи</diav>
-                <a href="#team" class="menu_link">команда</a>
-                <a href="#office" class="menu_link">Наш офис</a>
-            </nav>
+    </header>
+    <div class="menu">
+        <div class="menu_header">
+            <a href="/" class="menu_logo">IDa TECH</a>
+            <button class="menu_close">close</button>
+        </div>
+        <nav class="menu_links">
+            <a href="#vacancies" class="menu_link">
+                <span class="menu_link-text">вакансии</span>
+            </a>
+            <a href="#tasks" class="menu_link">
+                <span class="menu_link-text">Наши задачи</span>
+            </a>
+            <a href="#team" class="menu_link">
+                <span class="menu_link-text">команда</span>
+            </a>
+            <a href="#office" class="menu_link">
+                <span class="menu_link-text">Наш офис</span>
+            </a>
+        </nav>
             <div class="menu_footer">
                 <div class="menu_footer-text">
                     <a href="mailto:hi@idatech.dev" class="menu_footer-link">hi@idatech.dev</a>
@@ -47,8 +56,8 @@
                     </a>
                 </div>
             </div>
-        </div>
-    </header>
+        <div class="menu_bg"></div>
+    </div>
 
     <main>
         <div class="section section__dark">
@@ -165,7 +174,9 @@
                     <div class="team_slider">
                         <div>
                             <div class="team_slider-image-wrapper active" data-slide="1">
-                                <img src="src/img/team/team-1.jpg" alt="" class="team_slider-image">
+                                <div class="team_slider-image-angle">
+                                    <img src="src/img/team/team-1.jpg" alt="" class="team_slider-image">
+                                </div>
                                 <div class="team_slider-meta">
                                     <span class="person_name">Олег</span>
                                     <span class="person_position">Head of HR</span>
@@ -361,8 +372,68 @@
                             <a href="src/img/office/office-10.jpg" class="carousel_item">
                                 <img src="src/img/office/office-10.jpg" alt="" class="carousel_image">
                             </a>
+                            <a href="src/img/office/office-1.jpg" class="carousel_item">
+                                <img src="src/img/office/office-1.jpg" alt="" class="carousel_image">
+                            </a>
+                            <a href="src/img/office/office-2.jpg" class="carousel_item">
+                                <img src="src/img/office/office-2.jpg" alt="" class="carousel_image">
+                            </a>
+                            <a href="src/img/office/office-3.jpg" class="carousel_item">
+                                <img src="src/img/office/office-3.jpg" alt="" class="carousel_image">
+                            </a>
+                            <a href="src/img/office/office-4.jpg" class="carousel_item">
+                                <img src="src/img/office/office-4.jpg" alt="" class="carousel_image">
+                            </a>
+                            <a href="src/img/office/office-5.jpg" class="carousel_item">
+                                <img src="src/img/office/office-5.jpg" alt="" class="carousel_image">
+                            </a>
+                            <a href="src/img/office/office-6.jpg" class="carousel_item">
+                                <img src="src/img/office/office-6.jpg" alt="" class="carousel_image">
+                            </a>
+                            <a href="src/img/office/office-7.jpg" class="carousel_item">
+                                <img src="src/img/office/office-7.jpg" alt="" class="carousel_image">
+                            </a>
+                            <a href="src/img/office/office-8.jpg" class="carousel_item">
+                                <img src="src/img/office/office-8.jpg" alt="" class="carousel_image">
+                            </a>
+                            <a href="src/img/office/office-9.jpg" class="carousel_item">
+                                <img src="src/img/office/office-9.jpg" alt="" class="carousel_image">
+                            </a>
+                            <a href="src/img/office/office-10.jpg" class="carousel_item">
+                                <img src="src/img/office/office-10.jpg" alt="" class="carousel_image">
+                            </a>
                         </div>
                         <div class="carousel_row" id="lightgallery2">
+                            <a href="src/img/office/office-1.jpg" data-src="src/img/office/office-1.jpg" class="carousel_item">
+                                <img src="src/img/office/office-1.jpg" alt="" class="carousel_image">
+                            </a>
+                            <a href="src/img/office/office-2.jpg" data-src="src/img/office/office-1.jpg" class="carousel_item">
+                                <img src="src/img/office/office-2.jpg" alt="" class="carousel_image">
+                            </a>
+                            <a href="src/img/office/office-3.jpg" data-src="src/img/office/office-1.jpg" class="carousel_item">
+                                <img src="src/img/office/office-3.jpg" alt="" class="carousel_image">
+                            </a>
+                            <a href="src/img/office/office-4.jpg" data-src="src/img/office/office-1.jpg" class="carousel_item">
+                                <img src="src/img/office/office-4.jpg" alt="" class="carousel_image">
+                            </a>
+                            <a href="src/img/office/office-5.jpg" data-src="src/img/office/office-1.jpg" class="carousel_item">
+                                <img src="src/img/office/office-5.jpg" alt="" class="carousel_image">
+                            </a>
+                            <a href="src/img/office/office-6.jpg" data-src="src/img/office/office-1.jpg" class="carousel_item">
+                                <img src="src/img/office/office-6.jpg" alt="" class="carousel_image">
+                            </a>
+                            <a href="src/img/office/office-7.jpg" data-src="src/img/office/office-1.jpg" class="carousel_item">
+                                <img src="src/img/office/office-7.jpg" alt="" class="carousel_image">
+                            </a>
+                            <a href="src/img/office/office-8.jpg" data-src="src/img/office/office-1.jpg" class="carousel_item">
+                                <img src="src/img/office/office-8.jpg" alt="" class="carousel_image">
+                            </a>
+                            <a href="src/img/office/office-9.jpg" data-src="src/img/office/office-1.jpg" class="carousel_item">
+                                <img src="src/img/office/office-9.jpg" alt="" class="carousel_image">
+                            </a>
+                            <a href="src/img/office/office-10.jpg" data-src="src/img/office/office-1.jpg" class="carousel_item">
+                                <img src="src/img/office/office-10.jpg" alt="" class="carousel_image">
+                            </a>
                             <a href="src/img/office/office-1.jpg" data-src="src/img/office/office-1.jpg" class="carousel_item">
                                 <img src="src/img/office/office-1.jpg" alt="" class="carousel_image">
                             </a>
@@ -436,9 +507,18 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="form_row form_row__center">
+                                <input type="checkbox" name="" id="agree" >
+                                <label for="agree">
+                                    Cогласен с <a href="/privacy" target="_blank" rel="noopener noreferrer">политикой конфиденциальности</a>
+                                </label>
+                            </div>
                             <div class="contact-form_sumbit">
                                 <input type="submit" value="отправить">
                             </div>
+                            <p class="form_success">
+                                Ваше сообщение успешно отправлено
+                            </p>
                         </form>
                     </div>
                 </div>

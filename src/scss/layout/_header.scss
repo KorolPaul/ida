@@ -9,6 +9,7 @@
     @include desktop {
         height: 50px;
         background-size: 50px 50px;
+        background-image: none;
     }
 
     &__static {
@@ -27,6 +28,8 @@
         height: 100%;
         @include desktop {
             justify-content: space-between;
+            padding-left: 100px;
+            max-width: none;
         }
     }
     &_back {

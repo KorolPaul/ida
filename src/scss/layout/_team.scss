@@ -18,13 +18,13 @@
         border-top: 1px dashed $cGray;
         border-bottom: 1px dashed $cGray;
         margin: 0 0 40px;
-        overflow: visible;
+        overflow: auto;
         @include desktop {
             border: none;
             padding: 0;
             background-color: transparent;
             gap: 0;
-            overflow: auto;
+            overflow: visible;
             padding: 0 30px !important;
         }
 
@@ -39,16 +39,10 @@
         }
     }
     &_slider-image-wrapper {
-        width: 70px;
-        position: relative;
+        min-width: 70px;
+        width: 100%;
         margin: 0 0 8px;
-        mask: linear-gradient(45deg, 
-        rgba(#fff, 0),
-        rgba(#fff, 0) 8%,
-            rgba(#fff, 1) 8%,
-            rgba(#fff, 1) 92%,
-            rgba(#fff, 0) 92%,
-            rgba(#fff, 0) 100%);
+        line-height: 0;
         transition: .2s $easingSmooth transform;
         @include desktop {
             width: 310px;
@@ -60,6 +54,18 @@
                 transform: rotate(-5deg);
             }
         }
+
+        
+    }
+    &_slider-image-angle {
+        position: relative;
+        mask: linear-gradient(45deg,
+                    rgba(#fff, 0),
+                    rgba(#fff, 0) 7.5%,
+                    rgba(#fff, 1) 7.5%,
+                    rgba(#fff, 1) 92.4%,
+                    rgba(#fff, 0) 92.4%,
+                    rgba(#fff, 0) 100%);
 
         &::after {
             content: '';
@@ -74,7 +80,7 @@
             transition: .3s $easingSmooth opacity;
         }
 
-        &.active::after {
+        .team_slider-image-wrapper.active &::after {
             opacity: 1;
         }
     }
@@ -82,10 +88,16 @@
         filter: grayscale(1);
     }
     &_slider-meta {
-        color: $color;
-        position: absolute;
-        left: 30px;
-        top: 100%;
+        display: none;
+        @include desktop {
+            display: block;
+            color: $color;
+            position: absolute;
+            left: 30px;
+            top: 100%;
+            line-height: initial;
+            top: 104%;
+        }
     }
     &_content {
         @include desktop {

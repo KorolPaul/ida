@@ -7,17 +7,22 @@
         gap: 18px;
         margin: 0 0 12px;
         transition: .3s linear transform;
+        overflow-x: auto;
         @include tablet {
+            overflow-x: inherit;
             margin-bottom: 25px;
             gap: 36px;
             margin-left: -20%;
-
+            @include desktop {
+                margin-left: -50vw;
+            }
         }
 
         &:nth-child(even) {
             @include tablet {
                 margin-left: -100%;
             }
+            
         }
     }
     &_item {

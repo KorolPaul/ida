@@ -6,48 +6,48 @@ input[type="checkbox"] {
     & + label:not([class]) {
         cursor: pointer;
         display: inline-block;
-        padding: 0 0 0 36px;
+        padding: 0 0 0 32px;
         min-height: 20px;
+        font-size: 12px;
         position: relative;
         margin: 0;
         transition: .2s $easing color;
-        @include tablet {
-            font-size: 18px;
+        @include desktop {
+            font-size: 16px;
         }
 
         &::before {
             content: '';
             box-sizing: border-box;
-            border: 1px solid #ECECEC;
+            border: 1px solid #000;
             border-radius: 4px;
             height: 20px;
             width: 20px;
             position: absolute;
-            top: -1px;
+            top: 0px;
             left: 0;
             transition: .1s ease-in-out border-color, .1s ease-in-out background-color;
-            @include desktop {
-                height: 26px;
-                width: 26px;
-            }
         }
         &::after {
             content: '';
             box-sizing: border-box;
             background: url(#{$img}/check.svg) no-repeat center / 100% 100%;
-            width: 9px;
-            height: 9px;
+            width: 13px;
+            height: 8px;
             position: absolute;
-            top: 5px;
-            left: 6px;
+            top: 6px;
+            left: 4px;
             opacity: 0;
             transform: scale(.3);
             transition: .1s $easing opacity, .2s $easing transform;
-            @include desktop {
-                width: 12px;
-                height: 12px;
-                top: 6px;
-                left: 7px;
+        }
+
+        a {
+            color: $color;
+            text-decoration: underline;
+
+            &:hover {
+                text-decoration: none;
             }
         }
     }
@@ -58,8 +58,8 @@ input[type="checkbox"] {
     }
     &:checked + label {
         &::before {
-            background-color: $cBlue ;
-            border-color: $cBlue;
+            background-color: $cGreen;
+            border-color: $cGreen;
         }
         &::after {
             opacity: 1;

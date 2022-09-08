@@ -26,13 +26,15 @@
         }
 
         &::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -1px;
-            bottom: 0;
-            width: 4px;
-            background: repeating-linear-gradient($bg_color, $cRed 2px);
+            @include tablet {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: -1px;
+                bottom: 0;
+                width: 4px;
+                background: repeating-linear-gradient($bg_color, $cRed 2px);
+            }
         }
     }
 }
@@ -134,6 +136,11 @@
         grid-column: 1;
         position: relative;
         z-index: 2;
+        overflow: auto;
+        margin-right: -24px;
+        @include tablet {
+            margin-right: 0;
+        }
     }
     &_tag {
         font-size: 14px;
@@ -143,6 +150,7 @@
         border-radius: 20px;
         height: 29px;
         line-height: 31px;
+        white-space: nowrap;
         @include tablet {
             height: 32px;
             line-height: 33px;

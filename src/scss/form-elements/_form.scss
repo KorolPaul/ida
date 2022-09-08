@@ -5,6 +5,12 @@
         @include desktop {
             width: 412px;
         }
+
+        &__center {
+            width: 100%;
+            text-align: center;
+            margin-bottom: 24px;
+        }
     }
     &_columns {
         @include desktop {
@@ -16,7 +22,7 @@
     &_column {
         @include desktop {
             flex-grow: 1;
-            margin-bottom: 80px;
+            margin-bottom: 60px;
         }
     }
     &_label {
@@ -28,7 +34,7 @@
         transition: .2s $easingSmooth transform, .2s $easingSmooth color;
 
         input:focus + &,
-        input:not(:placeholder-shown) + &б
+        input:not(:placeholder-shown) + &,
         textarea:focus + &,
         textarea:not(:placeholder-shown) + & {
             transform: scale(.8) translateY(-35px);
@@ -36,6 +42,21 @@
 
         .error & {
             color: $cRed;
+        }
+    }
+    &_success {
+        background: url(#{$img}/success.svg) no-repeat top center;
+        color: $cGreen;
+        font-weight: 700;
+        font-size: 24px;
+        line-height: 29px;
+        font-family: $font-family__heading;
+        padding-top: 68px;
+        text-align: center;
+        display: none;
+
+        .successed & {
+            display: block;
         }
     }
 }
