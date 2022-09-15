@@ -132,7 +132,40 @@
         @include desktop {
             overflow: visible;
             margin: 0;
+            position: relative;
         }
+
+        // &::after {
+        //     @include desktop {
+        //         content: '';
+        //         pointer-events: none;
+        //         position: absolute;
+        //         left: 50%;
+        //         top: 0;
+        //         width: 100vw;
+        //         background-color: $bg_color;
+        //         height: 100%;
+        //         transform: translateX(-50%);
+        //         mask: linear-gradient(90deg, 
+        //             rgba(#fff, 1),
+        //             rgba(#fff, 1) 6%, 
+        //             rgba(#fff, 0) 20%,
+        //             rgba(#fff, 0) 80%,
+        //             rgba(#fff, 1) 90%,
+        //             rgba(#fff, 1) 100%
+        //         );
+        //     }
+        //     @include desktop-large {
+        //         mask: linear-gradient(90deg, 
+        //             rgba(#fff, 1),
+        //             rgba(#fff, 1) 10%, 
+        //             rgba(#fff, 0) 20%,
+        //             rgba(#fff, 0) 80%,
+        //             rgba(#fff, 1) 90%,
+        //             rgba(#fff, 1) 100%
+        //         );
+        //     }
+        // }
     }
     .tns-controls {
         position: absolute;

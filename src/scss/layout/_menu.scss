@@ -27,7 +27,7 @@
         z-index: 11;
         mix-blend-mode: difference;
         overflow-y: visible;
-        position: fixed;
+        position: absolute;
     }
 
     .menu-opened & {
@@ -38,6 +38,7 @@
             position: static;
             flex-grow: 1;
             width: 33.33%;
+            box-sizing: border-box;
         }
     }
 
@@ -163,6 +164,7 @@
             color: $bg_color;
             font-size: 16px;
             margin: 8px 0;
+            opacity: 1;
         }
 
        
@@ -190,28 +192,28 @@
             }
         }
     }
-    &_link-text {
-        position: relative;
-
-         &::before {
-            @include desktop {
-                content: '';
-                position: absolute;
-                left: -20px;
-                top: 5px;
-                height: 8px;
-                width: 8px;
-                border-radius: 50%;
-                transition: .2s $easing background;
-            }
-        }
-
-        .menu_link.active & {
-            &::before {
-                background-color: currentColor;
-            }
-        }
-    }
+    // &_link-text {
+    //     position: relative;
+// 
+    //      &::before {
+    //         @include desktop {
+    //             content: '';
+    //             position: absolute;
+    //             left: -20px;
+    //             top: 5px;
+    //             height: 8px;
+    //             width: 8px;
+    //             border-radius: 50%;
+    //             transition: .2s $easing background;
+    //         }
+    //     }
+// 
+    //     .menu_link.active & {
+    //         &::before {
+    //             background-color: currentColor;
+    //         }
+    //     }
+    // }
     &_footer {
         background-color: #000;
         border-top: 1px dashed $bg_color;

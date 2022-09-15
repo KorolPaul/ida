@@ -29,6 +29,7 @@
         @include desktop {
             justify-content: space-between;
             padding-left: 100px;
+            padding-right: 100px;
             max-width: none;
         }
     }
@@ -54,6 +55,7 @@
             flex-grow: 1;
             width: 33.33%;
             margin: 0;
+            box-sizing: border-box;
         }
 
         &:hover {
@@ -77,6 +79,7 @@
         @include desktop {
             flex-grow: 1;
             width: 33.33%;
+            box-sizing: border-box;
         }
     }
 }

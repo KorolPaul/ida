@@ -1,7 +1,7 @@
 const wheelEvent = 'onwheel' in document.createElement('div') ? 'wheel' : 'mousewheel';
 const thresholdSteps = [...Array(10).keys()].map(i => i / 10);
 const isMobile = window.innerWidth <= 768
-const isDesktop = window.innerWidth >= 1440
+const isDesktop = window.innerWidth >= 1000
 
 // sliders
 const teamSlider = document.querySelectorAll('.team_slider');
@@ -18,7 +18,7 @@ teamSlider.forEach(el => {
         loop: false,
         disable: true,
         responsive: {
-            1440: {
+            1000: {
                 disable: false,
                 items: 4,
                 gutter: 0,

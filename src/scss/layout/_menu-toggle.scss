@@ -1,10 +1,10 @@
 .menu-toggle {
     @include button-reset;
     position: fixed;
-    top: 26px;
+    top: 16px;
     right: $indent;
     width: 24px;
-    height: 24px;
+    height: 36px;
     z-index: 10;
     @include desktop {
         display: none;
@@ -20,24 +20,11 @@
     }
     
     &_line {
-        position: absolute;
         top: 50%;
         left: 0;
         width: 24px;
         height: 2px;
         background: url(#{$img}/burger-line.svg) no-repeat center center / 100% 100%;
-
-        &:nth-child(1) {
-            margin-top: -6px;
-            @include desktop {
-                margin-top: -10px;
-            }
-        }
-        &:nth-child(2) {
-            margin-top: 6px;
-            @include desktop {
-                margin-top: 10px;
-            }
-        }
+        margin: 7px 0;
     }
 }
