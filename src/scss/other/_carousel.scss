@@ -1,27 +1,31 @@
 .carousel {
     margin-left: -$indent;
     margin-right: -$indent;
+    overflow: visible;
 
+    &_row-wrapper {
+        display: flex;
+        position: relative;
+        overflow: visible;
+    }
     &_row {
         display: flex;
         gap: 18px;
         margin: 0 0 12px;
         transition: .3s linear transform;
-        overflow-x: auto;
+        flex-shrink: 0;
+        animation: row-slide 80s linear infinite;
         @include tablet {
-            overflow-x: inherit;
             margin-bottom: 25px;
             gap: 36px;
-            margin-left: -20%;
-            @include desktop {
-                margin-left: -50vw;
-            }
         }
 
-        &:nth-child(even) {
-            @include tablet {
-                margin-left: -100%;
-            }
+        &__duplicate {
+            animation: row-slide-duplicate 80s linear infinite;
+        }
+
+        .carousel_row-wrapper:nth-child(even) & {
+            animation-direction: reverse;
             
         }
     }
@@ -33,5 +37,33 @@
         @include tablet {
             height: 295px;
         }
+    }
+}
+
+@keyframes row-slide {
+    0% {
+        transform: translate(0);
+    }
+
+    50% {
+        transform: translate(-100%);
+    }
+
+    50.01% {
+        transform: translate(100%);
+    }
+
+    100% {
+        transform: translate(0);
+    }
+}
+
+@keyframes row-slide-duplicate {
+    0% {
+        transform: translate(0);
+    }
+
+    100% {
+        transform: translate(-200%);
     }
 }

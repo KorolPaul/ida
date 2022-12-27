@@ -19,6 +19,7 @@
         border-bottom: 1px dashed $cGray;
         margin: 0 0 40px;
         overflow: auto;
+        transition: 1s transform $easeOutCirc;
         @include desktop {
             border: none;
             padding: 0;

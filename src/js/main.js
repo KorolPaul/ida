@@ -4,29 +4,6 @@ const isMobile = window.innerWidth <= 768
 const isDesktop = window.innerWidth >= 1000
 
 // sliders
-const teamSlider = document.querySelectorAll('.team_slider');
-teamSlider.forEach(el => {
-    tns({
-        container: el,
-        items: 1,
-        gutter: 16,
-        mouseDrag: true,
-        autoplay: false,
-        nav: true,
-        navPosition: 'bottom',
-        controls: true,
-        loop: false,
-        disable: true,
-        responsive: {
-            1000: {
-                disable: false,
-                items: 4,
-                gutter: 0,
-                autoWidth: true,
-            }
-        }
-    });
-})
 
 
 // menu
@@ -257,14 +234,12 @@ function vacancyEl(){
 vacancyEl();
 
 
-/* carousel slider */
-const carouselSliders = document.querySelectorAll('.carousel');
-const carouselRows = document.querySelectorAll('.carousel_row');
+const teamSlider = document.querySelectorAll('.team_slider');
 
-carouselSliders.forEach(carousel => {
+teamSlider.forEach(carousel => {
     function scrollRow(e) {
         const isDown = e.deltaY > 0;
-        const step = 40;
+        const step = 50;
 
         function translate(el, isReverse) {
             const isForward = isReverse ? !isDown : isDown;
@@ -278,18 +253,7 @@ carouselSliders.forEach(carousel => {
             }
         }
 
-        if (carouselRows[0]) {
-            translate(carouselRows[0])
-        }
-        if (carouselRows[1]) {
-            translate(carouselRows[1], true)
-        }
-        if (carouselRows[2]) {
-            translate(carouselRows[2])
-        }
-        if (carouselRows[3]) {
-            translate(carouselRows[3], true)
-        }
+        translate(carousel)
     }
 
     const observerCallback = function (e) {
@@ -311,6 +275,7 @@ carouselSliders.forEach(carousel => {
     observer.observe(carousel);
 });
 
+const carouselRows = document.querySelectorAll('.carousel_row');
 carouselRows.forEach((el) => {
     el.style.transform = 'translateX(0)'
     lightGallery(el, {
