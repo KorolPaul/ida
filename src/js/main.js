@@ -4,7 +4,75 @@ const isMobile = window.innerWidth <= 768
 const isDesktop = window.innerWidth >= 1000
 
 // sliders
+const teamSliderElement = document.querySelectorAll('.team_slider');
+if (teamSliderElement) {
+    const teamSlider = tns({
+        container: '.team_slider',
+        items: 1,
+        gutter: 16,
+        mouseDrag: true,
+        autoplay: false,
+        nav: true,
+        navPosition: 'bottom',
+        controls: true,
+        loop: false,
+        disable: true,
+        responsive: {
+            1440: {
+                disable: false,
+                items: 4,
+                gutter: 0,
+                autoWidth: true,
+                controls: false,
+                nav: false,
+            }
+        }
+    });
 
+
+    const teamCarouselWrapper = document.querySelector('.team .tns-ovh');
+    if (teamCarouselWrapper) {
+        var isAnimated = false;
+
+        function handleCarouselScroll(isForward) {
+            if (isAnimated) {
+                return
+            }
+
+            isAnimated = true
+            setTimeout(() => {
+                isAnimated = false
+            }, 200);
+
+            const { slideCount, index } = teamSlider.getInfo();
+            if (isForward) {
+                if (index >= slideCount / 2) {
+                    document.removeEventListener(wheelEvent, preventScroll, { passive: false });
+                    return;
+                }
+
+                teamSlider.goTo('next');
+            } else {
+                if (index === 0) {
+                    document.removeEventListener(wheelEvent, preventScroll, { passive: false });
+                    return;
+                }
+                teamSlider.goTo('prev');
+            }
+        }
+
+        function preventScroll(e) {
+            e.preventDefault()
+
+            handleCarouselScroll(e.deltaY > 0)
+        }
+
+        teamCarouselWrapper.addEventListener('mouseenter', () => document.addEventListener(wheelEvent, preventScroll, { passive: false }));
+        teamCarouselWrapper.addEventListener('mouseleave', () => document.removeEventListener(wheelEvent, preventScroll, { passive: false }));
+    }
+
+        
+}
 
 // menu
 const menuToggleElement = document.querySelector('.menu-toggle');
@@ -234,46 +302,6 @@ function vacancyEl(){
 vacancyEl();
 
 
-const teamSlider = document.querySelectorAll('.team_slider');
-
-teamSlider.forEach(carousel => {
-    function scrollRow(e) {
-        const isDown = e.deltaY > 0;
-        const step = 50;
-
-        function translate(el, isReverse) {
-            const isForward = isReverse ? !isDown : isDown;
-            const transformString = el.style.transform;
-            const previuosX = transformString.substring(transformString.indexOf('(') + 1, transformString.indexOf('px'));
-
-            if (isForward) {
-                el.style.transform = `translateX(${Number(previuosX) - step}px)`;
-            } else {
-                el.style.transform = `translateX(${Number(previuosX) + step}px)`;
-            }
-        }
-
-        translate(carousel)
-    }
-
-    const observerCallback = function (e) {
-        const { boundingClientRect, intersectionRatio } = e[0];
-        // const ratio = boundingClientRect.height / 2 - boundingClientRect.y;
-
-        if (intersectionRatio > 0.1) {
-            document.addEventListener(wheelEvent, scrollRow)
-        } else {
-            document.removeEventListener(wheelEvent, scrollRow)
-        }
-    };
-
-    const observer = new IntersectionObserver(observerCallback, {
-        rootMargin: '0px 0px 0px 0px',
-        threshold: thresholdSteps,
-        root: null
-    });
-    observer.observe(carousel);
-});
 
 const carouselRows = document.querySelectorAll('.carousel_row');
 carouselRows.forEach((el) => {
