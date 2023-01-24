@@ -10,38 +10,69 @@
     }
 
     &_slider {
+        transition: 1s transform $easeOutCirc;
+        @include desktop {
+            padding: 476px 20px 0 0;
+            height: 2000px;
+            width: 556px;
+            overflow-y: auto;
+            overflow-x: hidden;
+            transform: rotate(-90deg) translateY(-566px);
+            transform-origin: right top;
+        }
+
+        scrollbar-width: none;
+        &::-webkit-scrollbar {
+            width: 0;
+            height: 0;
+        }
+    }
+    &_slider-scroll {
         display: flex;
-        overflow-x: auto;
         gap: 16px;
         padding: 16px;
         background-color: #E4E4E4;
+        overflow-x: auto;
         border-top: 1px dashed $cGray;
         border-bottom: 1px dashed $cGray;
-        margin: 0 0 40px;
         overflow: auto;
-        transition: 1s transform $easeOutCirc;
+        margin: 0 -16px 40px;
         @include desktop {
+            display: block;
             border: none;
             padding: 0;
             background-color: transparent;
             gap: 0;
             overflow: visible;
-            padding: 0 30px !important;
+            text-align: right;
+            margin: 0;
         }
 
         & > div {
             flex-grow: 1;
-
+    
+            @include desktop {
+                display: inline-block;
+                text-align: left;
+                transform: rotate(90deg);
+                transform-origin: right top;
+                width: 476px;
+                height: 310px;
+            }
+    
             &:nth-child(odd) {
-                @include desktop {
-                    margin-top: 54px;
+                
+                & > div {
+                    position: relative;
+                    @include desktop {
+                        top: 54px;
+                    }
                 }
             }
         }
     }
     &_slider-image-wrapper {
-        min-width: 70px;
-        width: 100%;
+        width: 70px;
         margin: 0 0 8px;
         line-height: 0;
         transition: .2s $easingSmooth transform;

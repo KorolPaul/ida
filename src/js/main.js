@@ -4,74 +4,39 @@ const isMobile = window.innerWidth <= 768
 const isDesktop = window.innerWidth >= 1000
 
 // sliders
-const teamSliderElement = document.querySelectorAll('.team_slider');
-if (teamSliderElement) {
-    const teamSlider = tns({
-        container: '.team_slider',
-        items: 1,
-        gutter: 16,
-        mouseDrag: true,
-        autoplay: false,
-        nav: true,
-        navPosition: 'bottom',
-        controls: true,
-        loop: false,
-        disable: true,
-        responsive: {
-            1440: {
-                disable: false,
-                items: 4,
-                gutter: 0,
-                autoWidth: true,
-                controls: false,
-                nav: false,
-            }
-        }
-    });
+const teamSliderElement = document.querySelector('.team_slider');
+const teamScrollElement = document.querySelector('.team_slider-scroll');
+const teamSliderElements = document.querySelectorAll('.team_slider-scroll > div')
 
+if (teamScrollElement && isDesktop) {
+    teamScrollElement.style.height = `${teamSliderElements.length * 447}px`;
+    // teamSliderElement.style.height = `${teamSliderElements.length * 447}px`;
+}
 
-    const teamCarouselWrapper = document.querySelector('.team .tns-ovh');
-    if (teamCarouselWrapper) {
-        var isAnimated = false;
+if (teamScrollElement && !isDesktop) {
+    // tns({
+    //     container: '.team_slider-scroll',
+    //     items: 1,
+    //     gutter: 16,
+    //     mouseDrag: true,
+    //     autoplay: false,
+    //     nav: true,
+    //     navPosition: 'bottom',
+    //     controls: true,
+    //     loop: false,
+    //     disable: false,
+    //     responsive: {
+    //         1440: {
+    //             disable: true,
+    //             items: 4,
+    //             gutter: 0,
+    //             autoWidth: true,
+    //             controls: false,
+    //             nav: false,
+    //         }
+    //     }
+    // });
 
-        function handleCarouselScroll(isForward) {
-            if (isAnimated) {
-                return
-            }
-
-            isAnimated = true
-            setTimeout(() => {
-                isAnimated = false
-            }, 200);
-
-            const { slideCount, index } = teamSlider.getInfo();
-            if (isForward) {
-                if (index >= slideCount / 2) {
-                    document.removeEventListener(wheelEvent, preventScroll, { passive: false });
-                    return;
-                }
-
-                teamSlider.goTo('next');
-            } else {
-                if (index === 0) {
-                    document.removeEventListener(wheelEvent, preventScroll, { passive: false });
-                    return;
-                }
-                teamSlider.goTo('prev');
-            }
-        }
-
-        function preventScroll(e) {
-            e.preventDefault()
-
-            handleCarouselScroll(e.deltaY > 0)
-        }
-
-        teamCarouselWrapper.addEventListener('mouseenter', () => document.addEventListener(wheelEvent, preventScroll, { passive: false }));
-        teamCarouselWrapper.addEventListener('mouseleave', () => document.removeEventListener(wheelEvent, preventScroll, { passive: false }));
-    }
-
-        
 }
 
 // menu
