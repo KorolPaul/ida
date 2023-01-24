@@ -13,7 +13,7 @@
         transition: 1s transform $easeOutCirc;
         @include desktop {
             padding: 476px 20px 0 0;
-            height: 2000px;
+            height: 2500px;
             width: 556px;
             overflow-y: auto;
             overflow-x: hidden;
@@ -52,12 +52,13 @@
             flex-grow: 1;
     
             @include desktop {
-                display: inline-block;
+                //display: inline-block;
                 text-align: left;
                 transform: rotate(90deg);
                 transform-origin: right top;
                 width: 476px;
                 height: 310px;
+                margin: 0 0 0 85px;
             }
     
             &:nth-child(odd) {
