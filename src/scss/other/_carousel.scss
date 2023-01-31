@@ -27,6 +27,7 @@
 
         .carousel_row-wrapper:nth-child(even) & {
             animation-direction: reverse;
+            animation-duration: 200s !important;
             
         }
     }

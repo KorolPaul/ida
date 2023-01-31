@@ -76,6 +76,7 @@
         width: 70px;
         margin: 0 0 8px;
         line-height: 0;
+        position: relative;
         transition: .2s $easingSmooth transform;
         @include desktop {
             width: 310px;
@@ -127,7 +128,6 @@
             color: $color;
             position: absolute;
             left: 30px;
-            top: 100%;
             line-height: initial;
             top: 104%;
         }
