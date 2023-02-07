@@ -16,6 +16,7 @@
         transition: .3s linear transform;
         flex-shrink: 0;
         animation: row-slide 160s linear infinite;
+        will-change: transform;
         @include tablet {
             margin-bottom: 25px;
             gap: 36px;
@@ -27,7 +28,7 @@
 
         .carousel_row-wrapper:nth-child(even) & {
             animation-direction: reverse;
-            animation-duration: 200s !important;
+            animation-duration: 220s !important;
             
         }
     }
@@ -44,28 +45,28 @@
 
 @keyframes row-slide {
     0% {
-        transform: translate(0);
+        transform: translate3d(0, 0, 0);
     }
 
     50% {
-        transform: translate(-100%);
+        transform: translate3d(-100%, 0, 0);
     }
 
     50.01% {
-        transform: translate(100%);
+        transform: translate3d(100%, 0, 0);
     }
 
     100% {
-        transform: translate(0);
+        transform: translate3d(0, 0, 0);
     }
 }
 
 @keyframes row-slide-duplicate {
     0% {
-        transform: translate(0);
+        transform: translate3d(0, 0, 0);
     }
 
     100% {
-        transform: translate(-200%);
+        transform: translate3d(-200%, 0, 0);
     }
 }

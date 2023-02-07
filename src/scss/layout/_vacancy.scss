@@ -140,6 +140,7 @@
         margin-right: -24px;
         @include tablet {
             margin-right: 0;
+            overflow: visible;
         }
     }
     &_tag {
