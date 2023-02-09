@@ -2,16 +2,20 @@
 .task,
 .person_header,
 .carousel {
-    filter: blur(5px);
-    opacity: 0;
-    transform: scale(.75);
-    transition: .8s $easeOutCirc opacity,
-                2s $easeOutCirc filter,
-                1.3s $easeOutCirc transform;
+    @include tablet {
+        filter: blur(5px);
+        opacity: 0;
+        transform: scale(.75);
+        transition: .8s $easeOutCirc opacity,
+                    2s $easeOutCirc filter,
+                    1.3s $easeOutCirc transform;
+    }
 
     &.animated {
-        filter: blur(0);
-        opacity: 1;
-        transform: scale(1);
+        @include tablet {
+            filter: blur(0);
+            opacity: 1;
+            transform: scale(1);
+        }
     }
 }

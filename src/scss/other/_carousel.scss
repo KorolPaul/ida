@@ -11,6 +11,8 @@
     }
     &_row {
         display: flex;
+        flex-shrink: 0;
+        flex-grow: 1;
         gap: 18px;
         margin: 0 0 12px;
         transition: .3s linear transform;
@@ -29,17 +31,23 @@
         .carousel_row-wrapper:nth-child(even) & {
             animation-direction: reverse;
             animation-duration: 220s !important;
-            
         }
+
+         .carousel_row-wrapper:nth-child(even) & {
+            margin-left: -50px;
+         }
     }
     &_item {
         flex-shrink: 0;
-    }
-    &_image {
+        aspect-ratio: 1.52;
         height: 148px;
+        display: block;
         @include tablet {
             height: 295px;
         }
+    }
+    &_image {
+        height: 100%;
     }
 }
 
